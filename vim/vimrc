@@ -78,8 +78,12 @@ set splitright            " vsplit on the right
 set mouse=a               " Enable mouse in terminal vim
 set noshowmode            " Don't show the standard 'Inserisci'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Ctrlp settings
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_extensions = ['dir', 'line', 'mixed']
-" let g:ycm_server_python_interpreter
-" let g:ctrlp_max_files=0
+
+let &t_SI = "\<Esc>[6 q"    " Cursor shape (insert, normal, replace)
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
