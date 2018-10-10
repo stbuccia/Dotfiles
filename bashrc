@@ -126,6 +126,12 @@ export PATH=/home/stefano/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr
 
 #set -o vi
 
+#evita il Fontconfig error
+export FONTCONFIG_PATH=/etc/fonts
+
+#fzf con fd
+export FZF_DEFAULT_COMMAND='fd --type f'
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='--height 40% --reverse'

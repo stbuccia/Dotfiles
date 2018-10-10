@@ -21,8 +21,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'neomake/neomake'
 " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'Valloric/YouCompleteMe'
-Plug 'kien/ctrlp.vim'
-Plug '~/.fzf'
+Plug 'junegunn/fzf', {'dir' : '~/.fzf', 'do': './install --all'} " fzf che si aggiorna in automatico
+
 call plug#end()
 
 " NeoMake automatic
@@ -53,6 +53,8 @@ inoremap ( ()<Esc>i
 inoremap " ""<Esc>i
 inoremap ` ``<Esc>i
 inoremap <C-Backspace> <Esc>dbi
+inoremap <C-f> :FZF<CR>
+nnoremap <C-f> :FZF<CR>
 set number
 set shiftwidth=4
 set path^=**              " Recursive file search starting from current dir
@@ -78,11 +80,6 @@ set splitright            " vsplit on the right
 set mouse=a               " Enable mouse in terminal vim
 set noshowmode            " Don't show the standard 'Inserisci'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-" Ctrlp settings
-let g:ctrlp_map = '<c-f>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_extensions = ['dir', 'line', 'mixed']
 
 let &t_SI = "\<Esc>[6 q"    " Cursor shape (insert, normal, replace)
 let &t_SR = "\<Esc>[4 q"
