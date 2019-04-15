@@ -80,6 +80,7 @@ set splitright            " vsplit on the right
 set mouse=a               " Enable mouse in terminal vim
 set noshowmode            " Don't show the standard 'Inserisci'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set encoding=utf-8        " UTF-8 encoding
 
 let &t_SI = "\<Esc>[6 q"    " Cursor shape (insert, normal, replace)
 let &t_SR = "\<Esc>[4 q"
