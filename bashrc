@@ -91,10 +91,10 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
-alias android-emulator='./Android/Sdk/emulator/emulator -avd Pixel_API_26 -use-system-libs'
+alias android-emulator='~/Android/Sdk/emulator/emulator -avd Pixel_API_26 -use-system-libs'
+alias android-studio='~/Software/android-studio/bin/studio.sh'
 alias o='xdg-open'
-alias of='xdg-open `find . \
-    -not -path "*/\.*" | fzf`'
+alias of='xdg-open `fzf`'
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.

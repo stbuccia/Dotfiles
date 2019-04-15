@@ -14,3 +14,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 
 #installa fzf
 [[ -d $HOME/.fzf ]] || (echo "Installing fzf... " && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install)
+
+#mette vim come editor predefinito
+xdg-mime default vim.desktop text/*
