@@ -1,13 +1,3 @@
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
 if has('nvim')
@@ -20,8 +10,9 @@ Plug 'mhartington/oceanic-next'
 Plug 'vim-airline/vim-airline'
 Plug 'neomake/neomake'
 " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/fzf', {'dir' : '~/.fzf', 'do': './install --all'} " fzf che si aggiorna in automatico
+"Plug 'jiangmiao/auto-pairs' "Mi chiude le parentesi
 
 call plug#end()
 
@@ -39,6 +30,7 @@ call neomake#configure#automake('nrwi', 500)
 if (has("termguicolors"))
  set termguicolors
 endif
+
 colorscheme OceanicNext
 syntax enable
 filetype plugin on
@@ -47,16 +39,12 @@ set autoindent
 set smartindent
 set smarttab
 set relativenumber
-inoremap { {}<Esc>i
-inoremap [ []<Esc>i
-inoremap ( ()<Esc>i
-inoremap " ""<Esc>i
-inoremap ` ``<Esc>i
 inoremap <C-Backspace> <Esc>dbi
-inoremap <C-f> :FZF<CR>
 nnoremap <C-f> :FZF<CR>
+map j gj
+map k gk 
 set number
-set shiftwidth=4
+set shiftwidth=1
 set path^=**              " Recursive file search starting from current dir
 set wildmenu              " Tab autocompletion in menu
 set wildignorecase        " Ignore case when autocomplete
@@ -74,14 +62,56 @@ set foldmethod=syntax     " Fold according to syntax
 set linebreak             " Break long lines at spaces, not in the middle of a word
 set hidden                " Allow to switch buffer without saving it
 set colorcolumn=+1        " Highlight column where the 81/th char lives
-set shell=/bin/bash\ -i   " Which shell to use
+set shell=/bin/bash       " Which shell to use
 set spelllang=it,en       " Spell dictionaries
 set splitright            " vsplit on the right
 set mouse=a               " Enable mouse in terminal vim
 set noshowmode            " Don't show the standard 'Inserisci'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set encoding=utf-8        " UTF-8 encoding
+set updatetime=2000       " Dopo due secondi di inattività completa salva
+se spell                  " Attivo lo spellcheck
+set spelllang=it,en       " Dizionari che voglio
+"set rtp+=/home/stefano/.opam/4.06.1/share/merlin/vim " Merlin 
 
 let &t_SI = "\<Esc>[6 q"    " Cursor shape (insert, normal, replace)
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
+
+
+" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor
+" ## end of OPAM user-setup addition for vim / base ## keep this line
+autocmd CursorHold * silent! update  " autosave
+
+
+

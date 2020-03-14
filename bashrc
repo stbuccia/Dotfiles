@@ -96,6 +96,7 @@ alias android-studio='~/Software/android-studio/bin/studio.sh'
 alias o='xdg-open'
 alias of='xdg-open `fzf`'
 alias vi='vim'
+alias todo='todo.sh'
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -136,3 +137,10 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
+# OPAM configuration
+. /home/stefano/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+#geth
+alias geth='~/Software/go-ethereum/build/bin/geth'
+
+export LANGUAGE=en_US.UTF-8
