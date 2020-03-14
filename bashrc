@@ -95,6 +95,7 @@ alias android-emulator='~/Android/Sdk/emulator/emulator -avd Pixel_API_26 -use-s
 alias android-studio='~/Software/android-studio/bin/studio.sh'
 alias o='xdg-open'
 alias of='xdg-open `fzf`'
+alias vi='vim'
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
