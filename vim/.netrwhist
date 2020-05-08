@@ -1,5 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/stefano/Utilità/scripts/script'
-let g:netrw_dirhist_2='/home/stefano/Università'
-let g:netrw_dirhist_3='/home/stefano'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/stefano/Nextcloud/Notes'
+let g:netrw_dirhist_2='/home/stefano/Nextcloud'
+let g:netrw_dirhist_3='/home/stefano/Nextcloud/Documents'
+let g:netrw_dirhist_4='/home/stefano/Nextcloud/Documents/Monni'
+let g:netrw_dirhist_5='/home/stefano/Dotfiles/vim/autoload'
+let g:netrw_dirhist_6='/home/stefano/Dotfiles/vim'
+let g:netrw_dirhist_7='/home/stefano/Dotfiles'
+let g:netrw_dirhist_8='/home/stefano'
+let g:netrw_dirhist_9='/home'

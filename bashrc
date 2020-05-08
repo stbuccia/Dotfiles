@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+#~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 export EDITOR=vim
@@ -76,12 +76,12 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -93,6 +93,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias android-emulator='~/Android/Sdk/emulator/emulator -avd Pixel_API_26 -use-system-libs'
 alias android-studio='~/Software/android-studio/bin/studio.sh'
+alias fd='fdfind'
 alias o='xdg-open'
 alias of='xdg-open `fzf`'
 alias vi='vim'
@@ -123,7 +124,6 @@ PATH=$PATH":$HOME/.local/bin"
 #wanda il pesce
 fortune
 
-
 export PATH=/home/stefano/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/stefano/.local/bin:/home/stefano/.vimpkg/bin
 
 #set -o vi
@@ -132,11 +132,8 @@ export PATH=/home/stefano/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr
 export FONTCONFIG_PATH=/etc/fonts
 
 #fzf con fd
-export FZF_DEFAULT_COMMAND='fd --type f'
-
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_OPTS='--height 40% --reverse'
+
 # OPAM configuration
 . /home/stefano/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
@@ -144,3 +141,26 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse'
 alias geth='~/Software/go-ethereum/build/bin/geth'
 
 export LANGUAGE=en_US.UTF-8
+
+# Shell options {{{
+shopt -s autocd
+shopt -s cdable_vars
+shopt -s cdspell
+shopt -s checkjobs
+shopt -s checkwinsize
+shopt -s direxpand
+shopt -s dirspell
+shopt -s extglob
+shopt -s globstar
+shopt -s histappend
+# }}}
+
+
+# Keybindings {{{
+bind C-e:menu-complete
+
+# }}}
+
+#set vi 
+set -o vi
+export EDITOR=vim

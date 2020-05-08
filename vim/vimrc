@@ -1,48 +1,59 @@
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
-if has('nvim')
-    Plug 'roxma/nvim-completion-manager'
-endif
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'donRaphaco/neotex', { 'for': 'tex' }
 Plug 'mhartington/oceanic-next'
 Plug 'vim-airline/vim-airline'
 Plug 'neomake/neomake'
-" Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-" Plug 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 Plug 'junegunn/fzf', {'dir' : '~/.fzf', 'do': './install --all'} " fzf che si aggiorna in automatico
-"Plug 'jiangmiao/auto-pairs' "Mi chiude le parentesi
+
+" Generic Programming Support
+"Plug 'jakedouglas/exuberant-ctags'
+Plug 'honza/vim-snippets'
+Plug 'Townk/vim-autoclose'
+Plug 'tomtom/tcomment_vim'
+Plug 'tobyS/vmustache'
+Plug 'janko-m/vim-test'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'vim-syntastic/syntastic'
+Plug 'neomake/neomake'
+
+" Markdown / Writting
+Plug 'reedes/vim-pencil'
+Plug 'tpope/vim-markdown'
+Plug 'jtratner/vim-flavored-markdown'
+Plug 'dpelle/vim-LanguageTool'
+
+" Git Support
+Plug 'kablamo/vim-git-log'
+Plug 'gregsexton/gitv'
+Plug 'tpope/vim-fugitive'
+"Plug 'jaxbot/github-issues.vim'
 
 call plug#end()
 
 " NeoMake automatic
-" When writing a buffer (no delay).
-call neomake#configure#automake('w')
-" When writing a buffer (no delay), and on normal mode changes (after 750ms).
-call neomake#configure#automake('nw', 750)
-" When reading a buffer (after 1s), and when writing (no delay).
-call neomake#configure#automake('rw', 1000)
-" Full config: when writing or reading a buffer, and on changes in insert and
-" normal mode (after 1s; no delay when writing).
-call neomake#configure#automake('nrwi', 500)
+"call neomake#configure#automake('w')
+"call neomake#configure#automake('nw', 750)
+"call neomake#configure#automake('rw', 1000)
+"call neomake#configure#automake('nrwi', 500)
 
 if (has("termguicolors"))
  set termguicolors
 endif
-
+"color theme (available only for neovim)
 colorscheme OceanicNext
 syntax enable
+
 filetype plugin on
 filetype plugin indent on
-set autoindent
 set smartindent
 set smarttab
 set relativenumber
 inoremap <C-Backspace> <Esc>dbi
-nnoremap <C-f> :FZF<CR>
-map j gj
-map k gk 
+nnoremap <C-f>:FZF<CR>
 set number
 set shiftwidth=1
 set path^=**              " Recursive file search starting from current dir
@@ -70,16 +81,17 @@ set noshowmode            " Don't show the standard 'Inserisci'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set encoding=utf-8        " UTF-8 encoding
 set updatetime=2000       " Dopo due secondi di inattività completa salva
-se spell                  " Attivo lo spellcheck
+"set spell                 " Attivo lo spellcheck
 set spelllang=it,en       " Dizionari che voglio
 "set rtp+=/home/stefano/.opam/4.06.1/share/merlin/vim " Merlin 
 
-let &t_SI = "\<Esc>[6 q"    " Cursor shape (insert, normal, replace)
+" Cursor shape (insert, normal, replace)
+let &t_SI = "\<Esc>[6 q"    
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
 
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+" added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
 
@@ -112,6 +124,4 @@ for tool in s:opam_packages
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
 autocmd CursorHold * silent! update  " autosave
-
-
 
