@@ -1,11 +1,11 @@
-#!/bin/bash
+#
+/bin/bash
 
 #rimuovo i file vecchi
 [[ -f ~/.vimrc ]] && rm ~/.vimrc
 [[ -f ~/.vim ]] && rm -rf ~/.vim
 [[ -f ~/.bashrc ]] && rm ~/.bashrc
-[[ -f ~/.i3/config ]] && rm ~/.i3/config
-[[ -f ~/fzf.bash ]] && rm ~/fzf.bash
+[[ -f ~/.fzf.bash ]] && rm ~/.fzf.bash
 
 ~/Utilità/ 
 #li ricostruisco facendo dei link simbolici
@@ -17,34 +17,43 @@ ln -s ~/Dotfiles/fzf.bash ~/.fzf.bash
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo "Open vim and digit ':PlugInstall'"
 
+#installa YCM
+cd ~/vim/plugged/YouCompleteMe
+python3 install.py --all
+
 #installa fzf
 [[ -d $HOME/.fzf ]] || (echo "Installing fzf... " && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install)
 
 #configurazione i3
 if [ "$DESKTOP_SESSION" = "i3" ]; then
     # i3 config
-    mkdir ~/.i3
-    ln -s ~/Dotfiles/i3/i3.conf ~/.i3/config 
+    [[ -f ~/.config/i3 ]] && rm -rf ~/.config/i3
+    [[ -f ~/.config/polybar ]] && rm -rf ~/.config/polybar
+    [[ -f ~/.config/rofi ]] && rm -rf ~/.config/rofi
+
+    ln -s ~/Dotfiles/config/i3 ~/.config/i3
+    ln -s ~/Dotfiles/config/polybar ~/.config/polybar 
+    ln -s ~/Dotfiles/config/rofi ~/.config/rofi
     i3 reload
-    # i3 blocks config
-    mkdir ~/.i3blocks
-    ln -s ~/Dotfiles/i3/i3blocks.conf ~/.i3blocks/config
-    i3blocks -c ~/.i3blocks/config
-    i3-msg restart
-    # download i3 scripts
-    rm -rf ~/.config/i3blocks
-    git clone https://github.com/vivien/i3blocks-contrib ~/.config/i3blocks
-    cd  ~/.config/i3blocks
-    for i in * 
-    do
-        chmod +x "$i"/"$i" 
-    done
-    make install
-    cd ..
-    rm -rf i3blocks
-    i3-msg restart
+    #i3 blocks config
+    ## mkdir ~/.i3blocks
+    #ln -s ~/Dotfiles/i3/i3blocks.conf ~/.i3blocks/config
+    #i3blocks -c ~/.i3blocks/config
+    #i3-msg restart
+    ## download i3 scripts
+    #rm -rf ~/.config/i3blocks
+    #git clone https://github.com/vivien/i3blocks-contrib ~/.config/i3blocks
+    #cd  ~/.config/i3blocks
+    #for i in * 
+    #do
+    #    chmod +x "$i"/"$i" 
+    #done
+    #make install
+    #cd ..
+    #rm -rf i3blocks
+    #i3-msg restart
 fi
 
 #mette vim come editor predefinito
 xdg-mime default vim.desktop text/*
-
+source ~/.bashrc

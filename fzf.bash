@@ -4,10 +4,9 @@ if [[ ! "$PATH" == */home/stefano/.fzf/bin* ]]; then
   export PATH="${PATH:+${PATH}:}/home/stefano/.fzf/bin"
 fi
 
-export FZF_DEFAULT_COMMAND='fdfind --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
-export FZF_ALT_C_COMMAND='locate .'
+#export FZF_ALT_C_COMMAND='locate .'
 # Auto-completion
 # ---------------
 [[ $- == *i* ]] && source "/home/stefano/.fzf/shell/completion.bash" 2> /dev/null
