@@ -1,8 +1,0 @@
-cmd        "xdg-open"
-oc-cmd     "evince;icon:evince"
-oc-cmd     "gimp;icon:gimp"
-depth      0
-
-# use-mode-keys
-open-parent-as-self
-show-hidden

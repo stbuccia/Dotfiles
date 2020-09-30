@@ -1,12 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
-let g:netrw_dirhist_2='/home/stefano/.config/polybar'
-let g:netrw_dirhist_1='/etc/conf.d'
-let g:netrw_dirhist_0='/home/stefano/.i3blocks'
-let g:netrw_dirhist_9='/home/stefano/.config/polybar'
-let g:netrw_dirhist_8='/home/stefano/Immagini'
-let g:netrw_dirhist_7='/home/stefano/.config/polybar'
-let g:netrw_dirhist_6='/home/stefano/.config/i3'
-let g:netrw_dirhist_5='/home/stefano/.config/rofi'
-let g:netrw_dirhist_4='/home/stefano/.config/i3'
-let g:netrw_dirhist_3='/home/stefano/scripts/script'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/buccia/.fzf'
+let g:netrw_dirhist_2='/home/buccia/Dotfiles/config/i3'
+let g:netrw_dirhist_3='/home/buccia/Utility/scripts'
+let g:netrw_dirhist_4='/home/buccia/Utility/scripts/script'

@@ -1,5 +1,4 @@
-#
-/bin/bash
+#!/bin/bash
 
 #rimuovo i file vecchi
 [[ -f ~/.vimrc ]] && rm ~/.vimrc
@@ -7,7 +6,6 @@
 [[ -f ~/.bashrc ]] && rm ~/.bashrc
 [[ -f ~/.fzf.bash ]] && rm ~/.fzf.bash
 
-~/Utilità/ 
 #li ricostruisco facendo dei link simbolici
 ln -s ~/Dotfiles/vim ~/.vim
 ln -s ~/Dotfiles/bashrc ~/.bashrc
@@ -16,10 +14,6 @@ ln -s ~/Dotfiles/fzf.bash ~/.fzf.bash
 #installa vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo "Open vim and digit ':PlugInstall'"
-
-#installa YCM
-cd ~/vim/plugged/YouCompleteMe
-python3 install.py --all
 
 #installa fzf
 [[ -d $HOME/.fzf ]] || (echo "Installing fzf... " && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install)
@@ -33,8 +27,15 @@ if [ "$DESKTOP_SESSION" = "i3" ]; then
 
     ln -s ~/Dotfiles/config/i3 ~/.config/i3
     ln -s ~/Dotfiles/config/polybar ~/.config/polybar 
+    # install font
+    cp -r config/polybar/fonts/* ~/.local/share/fonts
+    fc-cache -v
+    sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf 
     ln -s ~/Dotfiles/config/rofi ~/.config/rofi
     i3 reload
+    #set timezone
+    sudo rm -rf /etc/localtime
+    sudo ln -s /usr/share/zoneinfo/Europe/Rome /etc/localtime
     #i3 blocks config
     ## mkdir ~/.i3blocks
     #ln -s ~/Dotfiles/i3/i3blocks.conf ~/.i3blocks/config
@@ -52,6 +53,8 @@ if [ "$DESKTOP_SESSION" = "i3" ]; then
     #cd ..
     #rm -rf i3blocks
     #i3-msg restart
+
+     
 fi
 
 #mette vim come editor predefinito
