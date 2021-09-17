@@ -6,8 +6,24 @@ Plug 'donRaphaco/neotex', { 'for': 'tex' }
 Plug 'mhartington/oceanic-next'
 Plug 'vim-airline/vim-airline'
 Plug 'neomake/neomake'
-Plug 'ycm-core/YouCompleteMe'
 Plug 'junegunn/fzf', {'dir' : '~/.fzf', 'do': './install --all'} " fzf che si aggiorna in automatico
+
+" Autocomplete
+
+" Plug 'ycm-core/YouCompleteMe'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+
+" enable ncm2 for all buffers
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+"set completeopt=noinsert,menuone,noselect
+
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
 
 " Generic Programming Support
 "Plug 'jakedouglas/exuberant-ctags'
@@ -19,6 +35,7 @@ Plug 'janko-m/vim-test'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'vim-syntastic/syntastic'
 Plug 'neomake/neomake'
+Plug 'scrooloose/nerdtree'
 
 " Markdown / Writting
 Plug 'reedes/vim-pencil'
@@ -30,7 +47,30 @@ Plug 'dpelle/vim-LanguageTool'
 Plug 'kablamo/vim-git-log'
 Plug 'gregsexton/gitv'
 Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
 "Plug 'jaxbot/github-issues.vim'
+
+" PHP and others
+Plug 'moll/vim-bbye'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-abolish'
+Plug 'phpactor/phpactor'
+Plug 'phpactor/ncm2-phpactor'
+Plug 'amiorin/vim-project'
+Plug 'mhinz/vim-startify'
+Plug 'StanAngeloff/php.vim'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'phpactor/phpactor'
+Plug 'phpactor/ncm2-phpactor'
+Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'majutsushi/tagbar'
+Plug 'joonty/vdebug'
+Plug 'tobyS/vmustache'
+Plug 'tobyS/pdv'
 
 call plug#end()
 
@@ -53,7 +93,6 @@ set smartindent
 set smarttab
 set relativenumber
 inoremap <C-Backspace> <Esc>dbi
-nnoremap <C-f>:FZF<CR>
 set number
 set shiftwidth=1
 set path^=**              " Recursive file search starting from current dir
@@ -83,7 +122,8 @@ set encoding=utf-8        " UTF-8 encoding
 set updatetime=2000       " Dopo due secondi di inattività completa salva
 "set spell                 " Attivo lo spellcheck
 set spelllang=it,en       " Dizionari che voglio
-"set rtp+=/home/stefano/.opam/4.06.1/share/merlin/vim " Merlin 
+set rtp+=/home/stefano/.opam/4.06.1/share/merlin/vim " Merlin 
+set clipboard=unnamedplus "Attiva il copia e incolla su Linux
 
 " Cursor shape (insert, normal, replace)
 let &t_SI = "\<Esc>[6 q"    

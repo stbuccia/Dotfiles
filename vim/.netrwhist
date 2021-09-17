@@ -1,6 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/buccia/.fzf'
-let g:netrw_dirhist_2='/home/buccia/Dotfiles/config/i3'
-let g:netrw_dirhist_3='/home/buccia/Utility/scripts'
-let g:netrw_dirhist_4='/home/buccia/Utility/scripts/script'
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/stefano/Documenti'
