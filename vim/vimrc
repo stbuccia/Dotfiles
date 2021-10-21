@@ -4,6 +4,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'donRaphaco/neotex', { 'for': 'tex' }
 Plug 'mhartington/oceanic-next'
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'neomake/neomake'
 Plug 'junegunn/fzf', {'dir' : '~/.fzf', 'do': './install --all'} " fzf che si aggiorna in automatico
@@ -84,7 +85,8 @@ if (has("termguicolors"))
  set termguicolors
 endif
 "color theme (available only for neovim)
-colorscheme OceanicNext
+"colorscheme OceanicNext
+colorscheme nord
 syntax enable
 
 filetype plugin on
