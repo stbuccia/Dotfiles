@@ -1,3 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/root/.config/nvim'
+let g:netrw_dirhist_4='/root/Dotfiles/vim/vim'
+let g:netrw_dirhist_3='/root'
+let g:netrw_dirhist_2='/root/nvim'
 let g:netrw_dirhist_1='/home/stefano/Documenti'

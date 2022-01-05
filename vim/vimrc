@@ -7,6 +7,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'neomake/neomake'
+Plug 'shaunsingh/nord.nvim'
 Plug 'junegunn/fzf', {'dir' : '~/.fzf', 'do': './install --all'} " fzf che si aggiorna in automatico
 
 " Autocomplete
