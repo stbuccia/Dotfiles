@@ -67,4 +67,4 @@ fi
 echo "Open vim and digit ':PlugInstall'"
 #mette vim come editor predefinito
 xdg-mime default vim.desktop text/*
-source ~/.bashrc
+source $HOME/.bashrc

@@ -57,9 +57,11 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \[\033[01;34m\]\w\[\033[00m\] '
+    PS1='\[\033[01;34m\]\w\[\033[00m\] '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u:\w\$ '
+    # PS1='${debian_chroot:+($debian_chroot)}\u:\w '
+    PS1='\w '
 fi
 unset color_prompt force_color_prompt
 
@@ -124,6 +126,8 @@ alias android-emulator='~/Android/Sdk/emulator/emulator -avd Pixel_API_26 -use-s
 alias android-studio='~/Software/android-studio/bin/studio.sh'
 if [ $(is_distro_name debian) == 1 ]; then
     alias fd='fdfind'
+elif [ $(is_distro_name pop) == 1 ]; then
+    alias fd='fdfind'
 elif [ $(is_distro_name manjaro) == 1 ]; then
     alias fdfind='fd'
 fi
@@ -160,27 +164,24 @@ PATH=$PATH":$HOME/.local/bin"
 #wanda il pesce
 fortune
 
-export PATH=/home/stefano/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/stefano/.local/bin:/home/stefano/.vimpkg/bin
+export PATH=/home/stefano/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/stefano/.local/bin:/home/stefano/.vimpkg/bin:$HOME/Utilities/omnetpp/bin:/home/stefano/Utilities/omnet/bin:/sbin:/usr/sbin
 
 #set -o vi
 
 #evita il Fontconfig error
 export FONTCONFIG_PATH=/etc/fonts
 
+export FZF_DEFAULT_COMMAND='fd --hidden'
+
 #fzf con fd
 if [ $(is_distro_name debian) == 1 ]; then
     export FZF_DEFAULT_COMMAND='fdfind --hidden'
-elif [ $(is_distro_name manjaro) == 1 ]; then
-    export FZF_DEFAULT_COMMAND='fd --hidden'
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # OPAM configuration
 . /home/stefano/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
-#geth
-alias geth='~/Software/go-ethereum/build/bin/geth'
 
 export LANGUAGE=en_US.UTF-8
 
@@ -200,10 +201,23 @@ shopt -s histappend
 
 # Keybindings {{{
 bind C-e:menu-complete
+bind C-p:fzf-passc
 
 # }}}
 
 #set vi 
 set -o vi
 export EDITOR=vim
+
+# set thefuck
+
+eval "$(thefuck --alias)"
+
+# set emoji on prompt
+if [ "$EUID" -ne 0 ]
+    PS1="⚓ "$PS1
+else
+    PS1="🔱 "$PS1
+fi
+
 
