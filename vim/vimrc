@@ -38,7 +38,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
 
-" Markdown / Writting
+"" Markdown / Writting
 Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
@@ -73,6 +73,7 @@ Plug 'joonty/vdebug'
 Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
 
+Plug 'jaxbot/github-issues.vim'
 call plug#end()
 
 " NeoMake automatic
@@ -87,6 +88,8 @@ endif
 "color theme (available only for neovim)
 "colorscheme OceanicNext
 colorscheme nord
+
+""color theme (available only for neovim)
 syntax enable
 
 filetype plugin on
@@ -115,13 +118,13 @@ set linebreak             " Break long lines at spaces, not in the middle of a w
 set hidden                " Allow to switch buffer without saving it
 set colorcolumn=+1        " Highlight column where the 81/th char lives
 set shell=/bin/bash       " Which shell to use
-set spelllang=it,en       " Spell dictionaries
 set splitright            " vsplit on the right
 set mouse=a               " Enable mouse in terminal vim
 set noshowmode            " Don't show the standard 'Inserisci'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set encoding=utf-8        " UTF-8 encoding
 set updatetime=2000       " Dopo due secondi di inattività completa salva
+set clipboard=unnamedplus " y e p ora funzionano sulla clipboard
 "set spell                 " Attivo lo spellcheck
 set spelllang=it,en       " Dizionari che voglio
 set rtp+=/home/stefano/.opam/4.06.1/share/merlin/vim " Merlin 

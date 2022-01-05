@@ -19,7 +19,7 @@ echo "Open vim and digit ':PlugInstall'"
 
 #installa YCM
 sudo apt install python3-dev cmake
-cd ~.vim/plugged/YouCompleteMe
+cd $HOME/.vim/plugged/YouCompleteMe
 ./install.py
 cd $HOME
 
@@ -67,4 +67,4 @@ fi
 
 #mette vim come editor predefinito
 xdg-mime default vim.desktop text/*
-source ~/.bashrc
+source $HOME/.bashrc
