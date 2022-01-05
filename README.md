@@ -1,7 +1,7 @@
 # Dotfiles
 my dotfiles ;)
 
-##Dependences
+## Dependences
 
 + curl
 + vim
@@ -12,6 +12,7 @@ my dotfiles ;)
 + rofi
 + polybar
 + playerctl
++ thefuck
 
 # Installazione
 ```

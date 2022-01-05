@@ -214,7 +214,7 @@ export EDITOR=vim
 eval "$(thefuck --alias)"
 
 # set emoji on prompt
-if [ "$EUID" -ne 0 ]
+if [ "$EUID" -ne 0 ]; then
     PS1="⚓ "$PS1
 else
     PS1="🔱 "$PS1
