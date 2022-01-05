@@ -6,6 +6,7 @@ call plug#begin('~/nvim/plugged')
 Plug 'bfredl/nvim-miniyank'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
+Plug 'shaunsingh/nord.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdcommenter'
