@@ -219,5 +219,3 @@ if [ "$EUID" -ne 0 ]
 else
     PS1="🔱 "$PS1
 fi
-
-
