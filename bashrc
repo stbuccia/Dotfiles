@@ -57,11 +57,10 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    #PS1='\[\033[01;34m\]\w\[\033[00m\] '
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \[\033[01;34m\]\w\[\033[00m\] '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\w > \[\033[00m\]'
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u:\w\$ '
-    #PS1='\w '
+    PS1='${debian_chroot:+($debian_chroot)}\w '
 fi
 unset color_prompt force_color_prompt
 
@@ -212,10 +211,11 @@ export EDITOR=vim
 # set thefuck
 
 eval "$(thefuck --alias)"
+alias rum='fuck'
 
 set emoji on prompt
 if [ "$EUID" -ne 0 ]; then
-    PS1="⚓ "$PS1
+    PS1="\`if [[ \$? = '0' ]]; then echo '⚓ '; else echo '☠️  '; fi\`"$PS1
 else
-    PS1="🔱 "$PS1
+    PS1="\`if [[ \$? = '0' ]]; then echo '🔱 '; else echo '☠️  '; fi\`"$PS1
 fi
