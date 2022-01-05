@@ -57,11 +57,11 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \[\033[01;34m\]\w\[\033[00m\] '
-    PS1='\[\033[01;34m\]\w\[\033[00m\] '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    #PS1='\[\033[01;34m\]\w\[\033[00m\] '
 else
-    # PS1='${debian_chroot:+($debian_chroot)}\u:\w '
-    PS1='\w '
+    PS1='${debian_chroot:+($debian_chroot)}\u:\w\$ '
+    #PS1='\w '
 fi
 unset color_prompt force_color_prompt
 
@@ -164,7 +164,7 @@ PATH=$PATH":$HOME/.local/bin"
 #wanda il pesce
 fortune
 
-export PATH=/home/stefano/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/stefano/.local/bin:/home/stefano/.vimpkg/bin:$HOME/Utilities/omnetpp/bin:/home/stefano/Utilities/omnet/bin:/sbin:/usr/sbin
+export PATH=/home/stefano/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/stefano/.local/bin:/home/stefano/.vimpkg/bin:$HOME/Utilities/omnetpp/bin:/home/stefano/Utilities/omnet/bin:/sbin:/usr/sbin:/home/stefano/.cargo/bin
 
 #set -o vi
 
@@ -213,7 +213,7 @@ export EDITOR=vim
 
 eval "$(thefuck --alias)"
 
-# set emoji on prompt
+set emoji on prompt
 if [ "$EUID" -ne 0 ]; then
     PS1="⚓ "$PS1
 else
