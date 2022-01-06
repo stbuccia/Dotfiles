@@ -62,6 +62,7 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\w '
 fi
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\w > \[\033[00m\]'
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -215,7 +216,7 @@ alias rum='fuck'
 
 set emoji on prompt
 if [ "$EUID" -ne 0 ]; then
-    PS1="\`if [[ \$? = '0' ]]; then echo '⚓ '; else echo '☠️  '; fi\`"$PS1
+    PS1="\`if [[ \$? = '0' ]]; then echo '⚓ '; else echo '☠️ '; fi\`"$PS1
 else
-    PS1="\`if [[ \$? = '0' ]]; then echo '🔱 '; else echo '☠️  '; fi\`"$PS1
+    PS1="\`if [[ \$? = '0' ]]; then echo '🔱 '; else echo '☠️ '; fi\`"$PS1
 fi

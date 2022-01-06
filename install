@@ -1,17 +1,22 @@
 #!/bin/bash
 
+#controllo che ci sia la cartella config
+[[ -f ~/.config ]] && rm -rf ~/.config
+
 #rimuovo i file vecchi
 [[ -f ~/.vimrc ]] && rm ~/.vimrc
 [[ -f ~/.vim ]] && rm -rf ~/.vim
 [[ -f ~/.bashrc ]] && rm ~/.bashrc
 [[ -f ~/.fzf.bash ]] && rm ~/.fzf.bash
 [[ -f ~/.config/nvim ]] && rm -rf ~/.config/nvim
+[[ -f ~/.config/kitty ]] && rm -rf ~/.config/kitty
 
 #li ricostruisco facendo dei link simbolici
 ln -s ~/Dotfiles/vim ~/.vim
 ln -s ~/Dotfiles/bashrc ~/.bashrc
 ln -s ~/Dotfiles/fzf.bash ~/.fzf.bash
 ln -s ~/Dotfiles/nvim ~/.config
+ln -s ~/Dotfiles/kitty ~/.config
 
 #installa vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
