@@ -3,6 +3,9 @@ let &packpath=&runtimepath
 source ~/.vim/vimrc
 
 call plug#begin('~/nvim/plugged')
+
+Plug 'arcticicestudio/nord-vim'
+Plug 'shaunsingh/nord.nvim'
 Plug 'bfredl/nvim-miniyank'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
@@ -13,6 +16,7 @@ Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
+colorscheme nord
 
 set encoding=UTF-8
 
