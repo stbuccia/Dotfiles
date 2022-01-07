@@ -214,9 +214,22 @@ export EDITOR=vim
 eval "$(thefuck --alias)"
 alias rum='fuck'
 
+#EMOJI
 set emoji on prompt
-if [ "$EUID" -ne 0 ]; then
-    PS1="\`if [[ \$? = '0' ]]; then echo '⚓ '; else echo '☠️ '; fi\`"$PS1
+
+TERMINAL_NAME=$(ps -o 'cmd=' -p $(ps -o 'ppid=' -p $$))
+if [ "$TERMINAL_NAME" = "kitty" ]; then
+    if [ "$EUID" -ne 0 ]; then
+        PS1="\`if [[ \$? = '0' ]]; then echo '⚓ '; else echo '☠️ '; fi\`"$PS1
+    else
+        PS1="\`if [[ \$? = '0' ]]; then echo '🔱 '; else echo '🌊'; fi\`"$PS1
+    fi
 else
-    PS1="\`if [[ \$? = '0' ]]; then echo '🔱 '; else echo '☠️ '; fi\`"$PS1
+    if [ "$EUID" -ne 0 ]; then
+        PS1="\`if [[ \$? = '0' ]]; then echo '⚓ '; else echo '☠️  '; fi\`"$PS1
+    else
+        PS1="\`if [[ \$? = '0' ]]; then echo '🔱 '; else echo '🌊 '; fi\`"$PS1
+    fi
 fi
+
+. .emoji-alias.bash

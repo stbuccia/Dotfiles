@@ -1,8 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/stefano/Dotfiles'
+let g:netrw_dirhist_1='/home/stefano/Dotfiles/config'
+let g:netrw_dirhist_0='/home/stefano/Dotfiles/config/kitty'
+let g:netrw_dirhist_9='/home/stefano/Dotfiles/config'
+let g:netrw_dirhist_8='/home/stefano/Dotfiles'
+let g:netrw_dirhist_7='/home/stefano/Dotfiles/config/kitty'
 let g:netrw_dirhist_6='/home/stefano/.config/kitty'
 let g:netrw_dirhist_5='/root/.config/nvim'
 let g:netrw_dirhist_4='/root/Dotfiles/vim/vim'
 let g:netrw_dirhist_3='/root'
-let g:netrw_dirhist_2='/root/nvim'
-let g:netrw_dirhist_1='/home/stefano/Documenti'

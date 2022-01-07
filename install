@@ -8,15 +8,19 @@
 [[ -f ~/.vim ]] && rm -rf ~/.vim
 [[ -f ~/.bashrc ]] && rm ~/.bashrc
 [[ -f ~/.fzf.bash ]] && rm ~/.fzf.bash
+[[ -f ~/.emoji-alias.bash ]] && rm ~/.emoji-alias.bash
 [[ -f ~/.config/nvim ]] && rm -rf ~/.config/nvim
 [[ -f ~/.config/kitty ]] && rm -rf ~/.config/kitty
+[[ -f ~/.config/topgrade.toml ]] && rm ~/.config/topgrade.toml
 
 #li ricostruisco facendo dei link simbolici
 ln -s ~/Dotfiles/vim ~/.vim
 ln -s ~/Dotfiles/bashrc ~/.bashrc
 ln -s ~/Dotfiles/fzf.bash ~/.fzf.bash
+ln -s ~/Dotfiles/emoji-alias.bash ~/.emoji-alias.bash
 ln -s ~/Dotfiles/nvim ~/.config
 ln -s ~/Dotfiles/kitty ~/.config
+ln -s ~/Dotfiles/topgrade.toml ~/.config
 
 #installa vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
