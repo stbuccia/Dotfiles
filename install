@@ -10,6 +10,7 @@
 [[ -f ~/.fzf.bash ]] && rm ~/.fzf.bash
 [[ -f ~/.emoji-alias.bash ]] && rm ~/.emoji-alias.bash
 [[ -f ~/.config/nvim ]] && rm -rf ~/.config/nvim
+[[ -f ~/nvim ]] && rm -rf ~/nvim
 [[ -f ~/.config/kitty ]] && rm -rf ~/.config/kitty
 [[ -f ~/.config/topgrade.toml ]] && rm ~/.config/topgrade.toml
 
