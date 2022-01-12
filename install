@@ -20,8 +20,8 @@ ln -s ~/Dotfiles/bashrc ~/.bashrc
 ln -s ~/Dotfiles/fzf.bash ~/.fzf.bash
 ln -s ~/Dotfiles/emoji-alias.bash ~/.emoji-alias.bash
 ln -s ~/Dotfiles/nvim ~/.config
-ln -s ~/Dotfiles/kitty ~/.config
-ln -s ~/Dotfiles/topgrade.toml ~/.config
+ln -s ~/Dotfiles/config/kitty ~/.config
+ln -s ~/Dotfiles/config/topgrade.toml ~/.config
 
 #installa vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -70,6 +70,7 @@ if [ "$DESKTOP_SESSION" = "i3" ]; then
     #cd ..
     #rm -rf i3blocks
     #i3-msg restart
+    
 
      
 fi

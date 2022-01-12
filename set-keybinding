@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Only for GNOME user
+
+dconf load /org/gnome/shell/keybindings/ < gnome-keybindings
+
+# To get actual keybindings configuration
+# dconf dump /org/gnome/shell/keybindings/ > gnome-keybindings

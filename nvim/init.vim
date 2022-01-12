@@ -13,11 +13,10 @@ Plug 'shaunsingh/nord.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdcommenter'
-
+Plug 'catppuccin/nvim'
 call plug#end()
 
 colorscheme nord
-
 set encoding=UTF-8
 
 " NERDTREE CONFIG
