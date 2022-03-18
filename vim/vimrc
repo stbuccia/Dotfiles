@@ -1,4 +1,5 @@
 call plug#begin()
+
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -26,6 +27,8 @@ Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 
+" Spell checker
+Plug 'dpelle/vim-LanguageTool'
 " Generic Programming Support
 "Plug 'jakedouglas/exuberant-ctags'
 Plug 'honza/vim-snippets'
@@ -74,6 +77,22 @@ Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
 
 Plug 'jaxbot/github-issues.vim'
+
+" NeoVim only plugins
+if has('nvim')
+
+    Plug 'nvim-lualine/lualine.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'bfredl/nvim-miniyank'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'shaunsingh/nord.nvim'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'catppuccin/nvim'
+
+endif
 call plug#end()
 
 " NeoMake automatic
@@ -100,6 +119,7 @@ set smartindent
 set smarttab
 set relativenumber
 inoremap <C-Backspace> <Esc>dbi
+nmap <C-n> :NERDTreeToggle<CR>
 set number
 set shiftwidth=1
 set path^=**              " Recursive file search starting from current dir
@@ -137,38 +157,54 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
+" vim-pathogen
 
-" added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
 
-let s:opam_configuration = {}
+" Syntastic
 
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-" ## end of OPAM user-setup addition for vim / base ## keep this line
-autocmd CursorHold * silent! update  " autosave
-
+""" added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 
+""let s:opam_share_dir = system("opam config var share")
+""let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+""
+""let s:opam_configuration = {}
+""
+""function! OpamConfOcpIndent()
+""  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+""endfunction
+""let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+""
+""function! OpamConfOcpIndex()
+""  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+""endfunction
+""let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+""
+""function! OpamConfMerlin()
+""  let l:dir = s:opam_share_dir . "/merlin/vim"
+""  execute "set rtp+=" . l:dir
+""endfunction
+""let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+""
+""let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+""let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+""let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+""for tool in s:opam_packages
+""  " Respect package order (merlin should be after ocp-index)
+""  if count(s:opam_available_tools, tool) > 0
+""    call s:opam_configuration[tool]()
+""  endif
+""endfor
+""" ## end of OPAM user-setup addition for vim / base ## keep this line
+""autocmd CursorHold * silent! update  " autosave
+""

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #controllo che ci sia la cartella config
-[[ -f ~/.config ]] && rm -rf ~/.config
+#[[ -f ~/.config ]] && rm -rf ~/.config
 
 #rimuovo i file vecchi
 [[ -f ~/.vimrc ]] && rm ~/.vimrc
