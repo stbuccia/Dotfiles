@@ -2,27 +2,12 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vim/vimrc
 
-call plug#begin('~/.config/nvim/plugged')
-
-Plug 'arcticicestudio/nord-vim'
-Plug 'shaunsingh/nord.nvim'
-Plug 'bfredl/nvim-miniyank'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ryanoasis/vim-devicons'
-Plug 'shaunsingh/nord.nvim'
-Plug 'airblade/vim-gitgutter'
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-Plug 'scrooloose/nerdcommenter'
-
-call plug#end()
-
 colorscheme nord
-
 set encoding=UTF-8
 
 " NERDTREE CONFIG
 
-nmap <C-n> :NERDTreeToggle<CR>
+"nmap <C-n> :NERDTreeToggle<CR>
 "" sync open file with NERDTree
 "" " Check if NERDTree is open or active
 "function! IsNERDTreeOpen()        
@@ -58,7 +43,8 @@ let g:coc_global_extensions = [
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
-set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
+set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup 
+" Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
 " don't give |ins-completion-menu| messages.

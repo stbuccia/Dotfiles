@@ -1,12 +1,1 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
-let g:netrw_dirhist_2='/var/www/classistipendi-new/src/Model/Table'
-let g:netrw_dirhist_1='/var/www/classistipendi-new/src/Model'
-let g:netrw_dirhist_0='/var/www/classistipendi-new/src'
-let g:netrw_dirhist_9='/var/www/classistipendi-new'
-let g:netrw_dirhist_8='/var/www'
-let g:netrw_dirhist_7='/var/www/classistipendi-new'
-let g:netrw_dirhist_6='/var/www/classistipendi/src'
-let g:netrw_dirhist_5='/var/www/classistipendi'
-let g:netrw_dirhist_4='/home/PERSONALE/stefano.bucciarelli3/Dotfiles/nvim'
-let g:netrw_dirhist_3='/home/PERSONALE/stefano.bucciarelli3/Dotfiles/.git'
