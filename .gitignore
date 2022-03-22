@@ -1,2 +1,4 @@
 vim/plugged
 vim/plugged/*
+nvim/plugged
+nvim/plugged/*

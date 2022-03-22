@@ -2,7 +2,7 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vim/vimrc
 
-call plug#begin('~/nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'shaunsingh/nord.nvim'

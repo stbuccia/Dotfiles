@@ -94,12 +94,14 @@ endif
 ""color theme (available only for neovim)
 syntax enable
 
+nmap <C-n> :NERDTreeToggle<CR>
+inoremap <C-Backspace> <Esc>dbi
+
 filetype plugin on
 filetype plugin indent on
 set smartindent
 set smarttab
 set relativenumber
-inoremap <C-Backspace> <Esc>dbi
 set number
 set shiftwidth=1
 set path^=**              " Recursive file search starting from current dir
@@ -138,6 +140,7 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
 
+
 " added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
@@ -171,4 +174,5 @@ for tool in s:opam_packages
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
 autocmd CursorHold * silent! update  " autosave
+
 
