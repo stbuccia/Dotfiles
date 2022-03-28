@@ -1,44 +1,26 @@
 call plug#begin()
 
-Plug 'sheerun/vim-polyglot'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'donRaphaco/neotex', { 'for': 'tex' }
-Plug 'mhartington/oceanic-next'
-Plug 'vim-airline/vim-airline'
+Plug 'sheerun/vim-polyglot' " A solid language pack for Vim. 
+Plug 'donRaphaco/neotex', { 'for': 'tex' } " latex live preview
+Plug 'vim-airline/vim-airline' " lean & mean status/tabline for vim that's light as air 
 Plug 'neomake/neomake'
-Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/fzf', {'dir' : '~/.fzf', 'do': './install --all'} " fzf che si aggiorna in automatico
 
-" Autocomplete
+" Theme
 
-" Plug 'ycm-core/YouCompleteMe'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
+Plug 'mhartington/oceanic-next'
+Plug 'arcticicestudio/nord-vim'
 
-" enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANT: :help Ncm2PopupOpen for more information
 "set completeopt=noinsert,menuone,noselect
 
-" NOTE: you need to install completion sources to get completions. Check
-" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-
-" Spell checker
-Plug 'dpelle/vim-LanguageTool'
 " Generic Programming Support
-"Plug 'jakedouglas/exuberant-ctags'
 Plug 'honza/vim-snippets'
 Plug 'Townk/vim-autoclose'
 Plug 'tomtom/tcomment_vim'
 Plug 'tobyS/vmustache'
 Plug 'janko-m/vim-test'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'vim-syntastic/syntastic'
-Plug 'neomake/neomake'
+
 Plug 'scrooloose/nerdtree'
 
 "" Markdown / Writting
@@ -48,15 +30,10 @@ Plug 'jtratner/vim-flavored-markdown'
 Plug 'dpelle/vim-LanguageTool'
 
 " Git Support
-Plug 'kablamo/vim-git-log'
-Plug 'gregsexton/gitv'
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
-"Plug 'jaxbot/github-issues.vim'
+Plug 'airblade/vim-gitgutter'
 
 " PHP and others
-Plug 'moll/vim-bbye'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
 Plug 'phpactor/phpactor'
@@ -66,32 +43,29 @@ Plug 'mhinz/vim-startify'
 Plug 'StanAngeloff/php.vim'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'phpactor/phpactor'
-Plug 'phpactor/ncm2-phpactor'
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+
+" Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'joonty/vdebug'
 Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
+Plug 'ryanoasis/vim-devicons'
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 
 Plug 'jaxbot/github-issues.vim'
 
 " NeoVim only plugins
 if has('nvim')
-
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'bfredl/nvim-miniyank'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'ryanoasis/vim-devicons'
     Plug 'shaunsingh/nord.nvim'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
     Plug 'scrooloose/nerdcommenter'
     Plug 'catppuccin/nvim'
-
 endif
 call plug#end()
 
@@ -118,8 +92,8 @@ filetype plugin indent on
 set smartindent
 set smarttab
 set relativenumber
-inoremap <C-Backspace> <Esc>dbi
-nmap <C-n> :NERDTreeToggle<CR>
+inoremap <C-Backspace><Esc>dbi
+nnoremap <C-n> :NERDTreeToggle<CR>
 set number
 set shiftwidth=1
 set path^=**              " Recursive file search starting from current dir

@@ -37,10 +37,9 @@
 [git]
 #max_concurrency = 5
 # Additional git repositories to pull
-#repos = [
-#    "~/src/*/",
-#    "~/.config/something"
-#]
+repos = [
+    "~/.pass-store"
+]
 
 # Don't pull the predefined git repos
 #predefined_repos = false

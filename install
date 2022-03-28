@@ -75,7 +75,15 @@ if [ "$DESKTOP_SESSION" = "i3" ]; then
      
 fi
 
+#if [ "$DESKTOP_SESSION" = "gnome" ]; then
+#
+#    # dconf load /org/gnome/shell/keybindings/ < gnome-keybindings 
+#    # dconf dumpo /org/gnome/shell/keybindings/ > gnome-keybindings 
+#fi
+
 echo "Open vim and digit ':PlugInstall'"
 #mette vim come editor predefinito
 xdg-mime default vim.desktop text/*
 source $HOME/.bashrc
+
+
