@@ -87,13 +87,15 @@ endif
 ""color theme (available only for neovim)
 syntax enable
 
+nmap <C-n> :NERDTreeToggle<CR>
+inoremap <C-Backspace> <Esc>dbi
+
 filetype plugin on
 filetype plugin indent on
 set smartindent
 set smarttab
 set relativenumber
-inoremap <C-Backspace><Esc>dbi
-nnoremap <C-n> :NERDTreeToggle<CR>
+nmap <C-n> :NERDTreeToggle<CR>
 set number
 set shiftwidth=1
 set path^=**              " Recursive file search starting from current dir
@@ -132,7 +134,6 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
 " vim-pathogen
-
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
