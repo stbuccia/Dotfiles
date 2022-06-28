@@ -1,0 +1,127 @@
+2022.03.28 16:27:58 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.03.28 16:27:59 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.03.28 16:27:59 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.80.[0m
+2022.03.28 16:27:59 INFO  Parse release: 11.0.12[0m
+2022.03.28 16:28:01 INFO  time: initialize in 2.67s[0m
+2022.03.28 16:28:02 WARN  Build server is not auto-connectable.[0m
+2022.03.28 16:28:02 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.05.31 16:40:04 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.05.31 16:40:04 INFO  Parse release: 11.0.15[0m
+2022.05.31 16:40:07 INFO  time: initialize in 2.72s[0m
+2022.05.31 16:40:07 WARN  Build server is not auto-connectable.[0m
+2022.05.31 16:40:07 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.05.31 16:40:34 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.05.31 16:40:34 INFO  Parse release: 11.0.15[0m
+2022.05.31 16:40:36 INFO  time: initialize in 2.48s[0m
+2022.05.31 16:40:37 WARN  Build server is not auto-connectable.[0m
+2022.05.31 16:40:37 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.05.31 16:45:17 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.05.31 16:45:17 INFO  Parse release: 11.0.15[0m
+2022.05.31 16:45:19 INFO  time: initialize in 2.48s[0m
+2022.05.31 16:45:20 WARN  Build server is not auto-connectable.[0m
+2022.05.31 16:45:20 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.13 11:40:15 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.13 11:40:16 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.13 11:40:16 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.13 11:40:16 INFO  Parse release: 11.0.15[0m
+2022.06.13 11:40:18 INFO  time: initialize in 2.5s[0m
+2022.06.13 11:40:19 WARN  Build server is not auto-connectable.[0m
+2022.06.13 11:40:19 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.13 11:40:49 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.13 11:40:49 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.13 11:40:49 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.13 11:40:49 INFO  Parse release: 11.0.15[0m
+2022.06.13 11:40:52 INFO  time: initialize in 2.71s[0m
+2022.06.13 11:40:53 WARN  Build server is not auto-connectable.[0m
+2022.06.13 11:40:53 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.13 11:52:53 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.13 11:52:54 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.13 11:52:54 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.13 11:52:54 INFO  Parse release: 11.0.15[0m
+2022.06.13 11:52:57 INFO  time: initialize in 2.93s[0m
+2022.06.13 11:52:57 WARN  Build server is not auto-connectable.[0m
+2022.06.13 11:52:57 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.13 12:06:12 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.13 12:06:13 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.13 12:06:13 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.13 12:06:13 INFO  Parse release: 11.0.15[0m
+2022.06.13 12:06:16 INFO  time: initialize in 2.6s[0m
+2022.06.13 12:06:16 WARN  Build server is not auto-connectable.[0m
+2022.06.13 12:06:16 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.13 12:06:32 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.13 12:06:33 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.13 12:06:33 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.13 12:06:33 INFO  Parse release: 11.0.15[0m
+2022.06.13 12:06:35 INFO  time: initialize in 2.64s[0m
+2022.06.13 12:06:36 WARN  Build server is not auto-connectable.[0m
+2022.06.13 12:06:36 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.13 12:09:09 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.13 12:09:09 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.13 12:09:09 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.13 12:09:09 INFO  Parse release: 11.0.15[0m
+2022.06.13 12:09:12 INFO  time: initialize in 2.66s[0m
+2022.06.13 12:09:12 WARN  Build server is not auto-connectable.[0m
+2022.06.13 12:09:12 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.13 12:34:30 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.13 12:34:30 INFO  Parse release: 11.0.15[0m
+2022.06.13 12:34:33 INFO  time: initialize in 2.58s[0m
+2022.06.13 12:34:33 WARN  Build server is not auto-connectable.[0m
+2022.06.13 12:34:33 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.13 12:35:31 INFO  shutting down Metals[0m
+2022.06.14 09:58:22 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.14 09:58:23 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.14 09:58:23 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.14 09:58:23 INFO  Parse release: 11.0.15[0m
+2022.06.14 09:58:26 INFO  time: initialize in 2.92s[0m
+2022.06.14 09:58:26 WARN  resetting database: /home/stefano/Dotfiles/.metals/metals.h2.db[0m
+2022.06.14 09:58:45 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.14 09:58:45 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.14 09:58:45 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.14 09:58:45 INFO  Parse release: 11.0.15[0m
+2022.06.14 09:58:48 INFO  time: initialize in 2.84s[0m
+2022.06.14 09:58:49 WARN  Build server is not auto-connectable.[0m
+2022.06.14 09:58:49 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.14 10:54:57 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.14 10:54:58 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.14 10:54:58 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.14 10:54:58 INFO  Parse release: 11.0.15[0m
+2022.06.14 10:55:02 INFO  time: initialize in 3.71s[0m
+2022.06.14 10:55:02 WARN  Build server is not auto-connectable.[0m
+2022.06.14 10:55:02 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.14 11:05:23 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.14 11:05:24 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.14 11:05:24 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.14 11:05:24 INFO  Parse release: 11.0.15[0m
+2022.06.14 11:39:07 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.14 11:39:07 INFO  Parse release: 11.0.15[0m
+2022.06.14 11:39:11 INFO  time: initialize in 3.41s[0m
+2022.06.14 11:39:11 WARN  Build server is not auto-connectable.[0m
+2022.06.14 11:39:11 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.16 09:36:52 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.16 09:36:52 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.16 09:36:52 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.16 09:36:52 INFO  Parse release: 11.0.15[0m
+2022.06.16 09:36:55 INFO  time: initialize in 2.65s[0m
+2022.06.16 09:36:55 WARN  Build server is not auto-connectable.[0m
+2022.06.16 09:36:55 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.16 09:37:31 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.16 09:37:32 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.16 09:37:32 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.16 09:37:32 INFO  Parse release: 11.0.15[0m
+2022.06.16 09:37:34 INFO  time: initialize in 2.43s[0m
+2022.06.16 09:37:35 WARN  Build server is not auto-connectable.[0m
+2022.06.16 09:37:35 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.16 09:38:09 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.16 09:38:10 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.16 09:38:10 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.16 09:38:10 INFO  Parse release: 11.0.15[0m
+2022.06.16 09:38:12 INFO  time: initialize in 2.39s[0m
+2022.06.16 09:38:13 WARN  Build server is not auto-connectable.[0m
+2022.06.16 09:38:13 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2022.06.23 09:34:42 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2022.06.23 09:34:42 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2022.06.23 09:34:42 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles' for client coc.nvim 0.0.81.[0m
+2022.06.23 09:34:42 INFO  Parse release: 11.0.15[0m
+2022.06.23 09:34:47 INFO  time: initialize in 4.17s[0m
+2022.06.23 09:34:47 WARN  Build server is not auto-connectable.[0m
+2022.06.23 09:34:47 WARN  no build tool detected in workspace '/home/stefano/Dotfiles'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m

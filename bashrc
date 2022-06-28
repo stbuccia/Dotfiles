@@ -124,12 +124,10 @@ alias la='ls -A'
 alias l='ls -CF'
 alias android-emulator='~/Android/Sdk/emulator/emulator -avd Pixel_API_26 -use-system-libs'
 alias android-studio='~/Software/android-studio/bin/studio.sh'
-if [ $(is_distro_name debian) == 1 ]; then
-    alias fd='fdfind'
-elif [ $(is_distro_name pop) == 1 ]; then
-    alias fd='fdfind'
-elif [ $(is_distro_name manjaro) == 1 ]; then
+if [ $(is_distro_name manjaro) == 1 ]; then
     alias fdfind='fd'
+else
+    alias fd='fdfind'
 fi
 alias o='xdg-open'
 alias of='xdg-open `fzf`'
@@ -171,7 +169,7 @@ export PATH=/home/stefano/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr
 #evita il Fontconfig error
 export FONTCONFIG_PATH=/etc/fonts
 
-export FZF_DEFAULT_COMMAND='fd --hidden'
+export FZF_DEFAULT_COMMAND='fdfind --hidden'
 
 #fzf con fd
 if [ $(is_distro_name debian) == 1 ]; then
@@ -232,7 +230,7 @@ else
     fi
 fi
 
-. .emoji-alias.bash
+/home/stefano/.emoji-alias.bash
 
 export TNS_ADMIN=/etc
 export LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib

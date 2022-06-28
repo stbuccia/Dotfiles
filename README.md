@@ -1,4 +1,5 @@
 # Dotfiles
+
 my dotfiles ;)
 
 ## Dependences
@@ -14,7 +15,8 @@ my dotfiles ;)
 + playerctl
 + thefuck
 
-# Installazione
+## Installazione
+
 ```
 git clone https://github.com/stbuccia/Dotfiles.git ~/Dotfiles
 cd !$

@@ -146,11 +146,13 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
+
+nmap <silent> ga <Plug>(coc-codeaction-cursor)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
+nmap <leader>al  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -209,3 +211,13 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" COC Extension keybindings
+
+nmap <leader>e :CocCommand explorer<CR>
+nmap <C-h> :CocCommand fzf-preview.CommandPalette<CR>
+nmap <C-p> :CocCommand fzf-preview.ProjectFiles<CR>
+
+" Vista Extension keybindings
+nmap <leader>vc :Vista coc<CR>
+nmap <leader>vf :Vista finder<CR>

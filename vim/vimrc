@@ -1,71 +1,76 @@
 call plug#begin()
 
 Plug 'sheerun/vim-polyglot' " A solid language pack for Vim. 
-Plug 'donRaphaco/neotex', { 'for': 'tex' } " latex live preview
+"Plug 'donRaphaco/neotex', { 'for': 'tex' } " latex live preview
 Plug 'vim-airline/vim-airline' " lean & mean status/tabline for vim that's light as air 
 Plug 'neomake/neomake'
 Plug 'junegunn/fzf', {'dir' : '~/.fzf', 'do': './install --all'} " fzf che si aggiorna in automatico
 
 " Theme
 
-Plug 'mhartington/oceanic-next'
+" Plug 'mhartington/oceanic-next'
 Plug 'arcticicestudio/nord-vim'
+
+" TagBar
+Plug 'majutsushi/tagbar'
 
 "set completeopt=noinsert,menuone,noselect
 
-" Generic Programming Support
-Plug 'honza/vim-snippets'
-Plug 'Townk/vim-autoclose'
-Plug 'tomtom/tcomment_vim'
-Plug 'tobyS/vmustache'
-Plug 'janko-m/vim-test'
-Plug 'maksimr/vim-jsbeautify'
-
-Plug 'scrooloose/nerdtree'
-
-"" Markdown / Writting
-Plug 'reedes/vim-pencil'
-Plug 'tpope/vim-markdown'
-Plug 'jtratner/vim-flavored-markdown'
-Plug 'dpelle/vim-LanguageTool'
-
-" Git Support
-Plug 'airblade/vim-gitgutter'
-
-" PHP and others
-" Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-abolish'
-Plug 'phpactor/phpactor'
-Plug 'phpactor/ncm2-phpactor'
-Plug 'amiorin/vim-project'
-Plug 'mhinz/vim-startify'
-Plug 'StanAngeloff/php.vim'
-Plug 'stephpy/vim-php-cs-fixer'
-Plug 'phpactor/phpactor'
-Plug 'adoy/vim-php-refactoring-toolbox'
-Plug 'stephpy/vim-php-cs-fixer'
-Plug 'SirVer/ultisnips'
-
-" Plug 'honza/vim-snippets'
-Plug 'majutsushi/tagbar'
-Plug 'joonty/vdebug'
-Plug 'tobyS/vmustache'
-Plug 'tobyS/pdv'
-Plug 'ryanoasis/vim-devicons'
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-
-Plug 'jaxbot/github-issues.vim'
+"" Generic Programming Support
+"Plug 'honza/vim-snippets'
+"Plug 'Townk/vim-autoclose'
+"Plug 'tomtom/tcomment_vim'
+"Plug 'tobyS/vmustache'
+"Plug 'janko-m/vim-test'
+"Plug 'maksimr/vim-jsbeautify'
+"
+Plug 'scrooloose/nerdtree' "Tree file explorer
+"
+""" Markdown / Writting
+"Plug 'reedes/vim-pencil'
+"Plug 'tpope/vim-markdown'
+"Plug 'jtratner/vim-flavored-markdown'
+"Plug 'dpelle/vim-LanguageTool'
+"
+"" Git Support
+Plug 'airblade/vim-gitgutter' "Showed edited lines
+"
+"" PHP and others
+"" Plug 'itchyny/lightline.vim'
+"Plug 'tpope/vim-commentary'
+"Plug 'tpope/vim-abolish'
+"Plug 'phpactor/phpactor'
+"Plug 'phpactor/ncm2-phpactor'
+"Plug 'amiorin/vim-project'
+"Plug 'mhinz/vim-startify'
+"Plug 'StanAngeloff/php.vim'
+"Plug 'stephpy/vim-php-cs-fixer'
+"Plug 'phpactor/phpactor'
+"Plug 'adoy/vim-php-refactoring-toolbox'
+"Plug 'stephpy/vim-php-cs-fixer'
+"Plug 'SirVer/ultisnips'
+"
+"Plug 'majutsushi/tagbar'
+"Plug 'joonty/vdebug'
+"Plug 'tobyS/vmustache'
+"Plug 'tobyS/pdv'
+"Plug 'ryanoasis/vim-devicons'
+"Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
+"Plug 'bfredl/nvim-miniyank'
+Plug 'scrooloose/nerdcommenter' " Shortcut per commentare
+Plug 'prabirshrestha/vim-lsp'   " Language Server Protocol
 
 " NeoVim only plugins
 if has('nvim')
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} "Preview markdown nel browser
     Plug 'nvim-lualine/lualine.nvim'
+    Plug 'liuchengxu/vista.vim' "Tagbar and fzf function search
     Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'bfredl/nvim-miniyank'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'shaunsingh/nord.nvim'
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'catppuccin/nvim'
+    "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    "Plug 'ggandor/lightspeed.nvim'
+    " Plug 'shaunsingh/nord.nvim'
+    " Plug 'catppuccin/nvim'
 endif
 call plug#end()
 
@@ -89,13 +94,14 @@ syntax enable
 
 nmap <C-n> :NERDTreeToggle<CR>
 inoremap <C-Backspace> <Esc>dbi
+nmap <F8> :TagbarToggle<CR>
+
 
 filetype plugin on
 filetype plugin indent on
 set smartindent
 set smarttab
 set relativenumber
-nmap <C-n> :NERDTreeToggle<CR>
 set number
 set shiftwidth=1
 set path^=**              " Recursive file search starting from current dir
@@ -122,7 +128,7 @@ set noshowmode            " Don't show the standard 'Inserisci'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set encoding=utf-8        " UTF-8 encoding
 set updatetime=2000       " Dopo due secondi di inattività completa salva
-set clipboard=unnamedplus " y e p ora funzionano sulla clipboard
+" set clipboard=unnamedplus " y e p ora funzionano sulla clipboard
 "set spell                 " Attivo lo spellcheck
 set spelllang=it,en       " Dizionari che voglio
 set rtp+=/home/stefano/.opam/4.06.1/share/merlin/vim " Merlin 
@@ -138,16 +144,16 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-" Syntastic
+"" Syntastic
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 """ added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 
 ""let s:opam_share_dir = system("opam config var share")
