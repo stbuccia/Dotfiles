@@ -237,3 +237,7 @@ export LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib
 export ORACLE_BASE=/usr/lib/oracle/21/client64
 export ORACLE_HOME=/usr/lib/oracle/21/client64/
 
+# NODE
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
+
