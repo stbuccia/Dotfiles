@@ -212,6 +212,11 @@ export EDITOR=vim
 eval "$(thefuck --alias)"
 alias rum='fuck'
 
+#Spark
+
+export SPARK_HOME=/home/stefano/Software/spark-3.2.1-bin-hadoop3.2-scala2.13
+export PATH=$PATH:$SPARK_HOME/bin
+
 #EMOJI
 set emoji on prompt
 
@@ -240,4 +245,6 @@ export ORACLE_HOME=/usr/lib/oracle/21/client64/
 # NODE
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
-
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
