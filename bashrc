@@ -160,9 +160,9 @@ fi
 PATH=$PATH":$HOME/.local/bin"
 
 #wanda il pesce
-fortune
+fortune #| cowsay -f armadillo
 
-export PATH=/home/stefano/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/stefano/.local/bin:/home/stefano/.vimpkg/bin:$HOME/Utilities/omnetpp/bin:/home/stefano/Utilities/omnet/bin:/sbin:/usr/sbin:/home/stefano/.cargo/bin
+export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:$HOME/.local/bin:$HOME/.vimpkg/bin:$HOME/Utilities/omnetpp/bin:$HOME/Utilities/omnet/bin:/sbin:/usr/sbin:$HOME/.cargo/bin
 
 #set -o vi
 
@@ -179,7 +179,7 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # OPAM configuration
-. /home/stefano/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+. $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 export LANGUAGE=en_US.UTF-8
 
@@ -209,12 +209,12 @@ export EDITOR=vim
 
 # set thefuck
 
-eval "$(thefuck --alias)"
-alias rum='fuck'
+#eval "$(thefuck --alias)"
+#alias rum='fuck'
 
 #Spark
 
-export SPARK_HOME=/home/stefano/Software/spark-3.2.1-bin-hadoop3.2-scala2.13
+export SPARK_HOME=$HOME/Software/spark-3.2.1-bin-hadoop3.2-scala2.13
 export PATH=$PATH:$SPARK_HOME/bin
 
 #EMOJI
@@ -235,7 +235,7 @@ else
     fi
 fi
 
-/home/stefano/.emoji-alias.bash
+[ -f $HOME/.emoji-alias.bash ] && source $HOME/.emoji-alias.bash
 
 export TNS_ADMIN=/etc
 export LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib
@@ -248,3 +248,12 @@ export PATH=$N_PREFIX/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#eval "$(gh copilot alias -- bash)"
+#alias ghcs='gh copilot suggest -t shell'
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH

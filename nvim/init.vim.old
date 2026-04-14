@@ -1,0 +1,46 @@
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath=&runtimepath
+source ~/.vim/vimrc
+
+colorscheme nord
+set encoding=UTF-8
+
+" NERDTREE CONFIG
+
+"nmap <C-n> :NERDTreeToggle<CR>
+"" sync open file with NERDTree
+"" " Check if NERDTree is open or active
+"function! IsNERDTreeOpen()        
+"  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+"endfunction
+"
+"" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+"" file, and we're not in vimdiff
+"function! SyncTree()
+"  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+"    NERDTreeFind
+"    wincmd p
+"  endif
+"endfunction
+"
+"" Highlight currently open buffer in NERDTree
+"autocmd BufEnter * call SyncTree()
+
+
+source ~/.config/nvim/coc_config.vim
+
+require("lazy").setup(plugins, {
+  defaults = { lazy = true },   -- carica i plugin solo quando necessario
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip", "matchit", "matchparen", "netrwPlugin",
+        "tarPlugin", "tohtml", "tutor", "zipPlugin",
+      },
+    },
+  },
+})
+
+
+require("options")   -- carica le opzioni
+require("config.lazy")

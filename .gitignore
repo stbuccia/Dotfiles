@@ -4,3 +4,6 @@ vim/plugged
 vim/plugged/*
 nvim/plugged
 nvim/plugged/*
+vim/.viminfo
+vim/.viminfo.tmp
+nvim/pack/

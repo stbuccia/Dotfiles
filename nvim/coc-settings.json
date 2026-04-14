@@ -19,5 +19,19 @@
   "markdownlint.config": {
     "default": true,
     "line_length": false
-  }
+  },
+  //   "languageserver": {
+  //   "phpactor": {
+  //     "command": "phpactor",
+  //     "args": ["language-server"],
+  //     "filetypes": ["php"]
+  //   }
+  // },
+  "python.jediEnabled": false,
+  "snippets.ultisnips.pythonPrompt": false,
+  "ltex.java.path": "/usr/lib/jvm/java-17-openjdk-amd64",
+  "ltex.language": "en",
+  "ltex.enabled": ["markdown", "tex", "latex", "text"],
+  "intelephense.environment.phpVersion": "8.1",
+  "intelephense.files.maxSize": 5000000
 }

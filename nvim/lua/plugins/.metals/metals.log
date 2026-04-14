@@ -1,0 +1,10 @@
+2026.01.21 15:32:59 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/nvim/lua/plugins/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2026.01.21 15:33:00 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2026.01.23 09:38:56 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/nvim/lua/plugins/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2026.01.23 09:38:56 INFO  logging to file /home/stefano/Dotfiles/.metals/metals.log[0m
+2026.01.23 09:39:38 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/stefano/Dotfiles/nvim/lua/plugins/.metals/lsp.trace.json or /home/stefano/.cache/metals/lsp.trace.json[0m
+2026.01.23 09:39:38 INFO  logging to file /home/stefano/Dotfiles/nvim/lua/plugins/.metals/metals.log[0m
+2026.01.23 09:39:38 INFO  Started: Metals version 0.11.2 in workspace '/home/stefano/Dotfiles/nvim/lua/plugins' for client coc.nvim 0.0.82.[0m
+2026.01.23 09:39:39 INFO  time: initialize in 0.74s[0m
+2026.01.23 09:39:39 WARN  Build server is not auto-connectable.[0m
+2026.01.23 09:39:39 WARN  no build tool detected in workspace '/home/stefano/Dotfiles/nvim/lua/plugins'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m

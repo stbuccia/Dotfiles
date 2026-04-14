@@ -1,107 +1,22 @@
-call plug#begin()
+" Main Vim configuration file
 
-Plug 'sheerun/vim-polyglot' " A solid language pack for Vim. 
-"Plug 'donRaphaco/neotex', { 'for': 'tex' } " latex live preview
-Plug 'vim-airline/vim-airline' " lean & mean status/tabline for vim that's light as air 
-Plug 'neomake/neomake'
-Plug 'junegunn/fzf', {'dir' : '~/.fzf', 'do': './install --all'} " fzf che si aggiorna in automatico
+" Source plugin configurations
+source ~/.vim/plugin_config.vim
 
-" Theme
+" Source key mappings
+source ~/.vim/key_mappings.vim
 
-" Plug 'mhartington/oceanic-next'
-Plug 'arcticicestudio/nord-vim'
+" Source appearance settings
+source ~/.vim/appearance.vim
 
-" TagBar
-Plug 'majutsushi/tagbar'
-
-"set completeopt=noinsert,menuone,noselect
-
-"" Generic Programming Support
-"Plug 'honza/vim-snippets'
-"Plug 'Townk/vim-autoclose'
-"Plug 'tomtom/tcomment_vim'
-"Plug 'tobyS/vmustache'
-"Plug 'janko-m/vim-test'
-"Plug 'maksimr/vim-jsbeautify'
-"
-Plug 'scrooloose/nerdtree' "Tree file explorer
-"
-""" Markdown / Writting
-"Plug 'reedes/vim-pencil'
-"Plug 'tpope/vim-markdown'
-"Plug 'jtratner/vim-flavored-markdown'
-"Plug 'dpelle/vim-LanguageTool'
-"
-"" Git Support
-Plug 'airblade/vim-gitgutter' "Showed edited lines
-"
-"" PHP and others
-"" Plug 'itchyny/lightline.vim'
-"Plug 'tpope/vim-commentary'
-"Plug 'tpope/vim-abolish'
-"Plug 'phpactor/phpactor'
-"Plug 'phpactor/ncm2-phpactor'
-"Plug 'amiorin/vim-project'
-"Plug 'mhinz/vim-startify'
-"Plug 'StanAngeloff/php.vim'
-"Plug 'stephpy/vim-php-cs-fixer'
-"Plug 'phpactor/phpactor'
-"Plug 'adoy/vim-php-refactoring-toolbox'
-"Plug 'stephpy/vim-php-cs-fixer'
-"Plug 'SirVer/ultisnips'
-"
-"Plug 'majutsushi/tagbar'
-"Plug 'joonty/vdebug'
-"Plug 'tobyS/vmustache'
-"Plug 'tobyS/pdv'
-"Plug 'ryanoasis/vim-devicons'
-"Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-"Plug 'bfredl/nvim-miniyank'
-Plug 'scrooloose/nerdcommenter' " Shortcut per commentare
-Plug 'prabirshrestha/vim-lsp'   " Language Server Protocol
-
-" NeoVim only plugins
-if has('nvim')
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} "Preview markdown nel browser
-    Plug 'nvim-lualine/lualine.nvim'
-    Plug 'liuchengxu/vista.vim' "Tagbar and fzf function search
-    Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    "Plug 'ggandor/lightspeed.nvim'
-    " Plug 'shaunsingh/nord.nvim'
-    " Plug 'catppuccin/nvim'
-endif
-call plug#end()
-
-" NeoMake automatic
-"call neomake#configure#automake('w')
-"call neomake#configure#automake('nw', 750)
-"call neomake#configure#automake('rw', 1000)
-"call neomake#configure#automake('nrwi', 500)
-
-if (has("termguicolors"))
- set termguicolors
-endif
-"color theme (available only for neovim)
-"colorscheme OceanicNext
-if !has('nvim')
-    colorscheme nord
-endif
-
-""color theme (available only for neovim)
-syntax enable
-
-nmap <C-n> :NERDTreeToggle<CR>
-inoremap <C-Backspace> <Esc>dbi
-nmap <F8> :TagbarToggle<CR>
-
+" Source copilot settings
+source ~/.vim/copilot.vim
 
 filetype plugin on
 filetype plugin indent on
 set smartindent
 set smarttab
-set relativenumber
+"set relativenumber
 set number
 set shiftwidth=1
 set path^=**              " Recursive file search starting from current dir
@@ -131,7 +46,6 @@ set updatetime=2000       " Dopo due secondi di inattività completa salva
 " set clipboard=unnamedplus " y e p ora funzionano sulla clipboard
 "set spell                 " Attivo lo spellcheck
 set spelllang=it,en       " Dizionari che voglio
-set rtp+=/home/stefano/.opam/4.06.1/share/merlin/vim " Merlin 
 set clipboard=unnamedplus "Attiva il copia e incolla su Linux
 
 " Cursor shape (insert, normal, replace)
@@ -143,49 +57,3 @@ let &t_EI = "\<Esc>[2 q"
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
-
-"" Syntastic
-
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-""" added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 
-""let s:opam_share_dir = system("opam config var share")
-""let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-""
-""let s:opam_configuration = {}
-""
-""function! OpamConfOcpIndent()
-""  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-""endfunction
-""let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-""
-""function! OpamConfOcpIndex()
-""  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-""endfunction
-""let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-""
-""function! OpamConfMerlin()
-""  let l:dir = s:opam_share_dir . "/merlin/vim"
-""  execute "set rtp+=" . l:dir
-""endfunction
-""let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-""
-""let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-""let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-""let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-""for tool in s:opam_packages
-""  " Respect package order (merlin should be after ocp-index)
-""  if count(s:opam_available_tools, tool) > 0
-""    call s:opam_configuration[tool]()
-""  endif
-""endfor
-""" ## end of OPAM user-setup addition for vim / base ## keep this line
-""autocmd CursorHold * silent! update  " autosave
-""

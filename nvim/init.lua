@@ -1,0 +1,7 @@
+require("config.lazy")
+require("options")
+require("keymaps")
+require("appearance")
+require("coc_config")
+require("copilot")
+require("comment_config")
