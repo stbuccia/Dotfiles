@@ -94,6 +94,15 @@
 
 ---
 
+## Docker — LazyDocker
+
+| Shortcut / Comando | Azione |
+|---|---|
+| `<leader>ld` | Apri LazyDocker |
+| `:Lazydocker` | Apri LazyDocker |
+
+---
+
 ## Copilot
 
 | Comando | Azione |
@@ -129,6 +138,7 @@
 |---|---|
 | `<leader>?` | Apri questo file |
 | `<leader>C` | Apri cartella configurazione Neovim |
+| `<leader>cd` | Cambia directory con fzf |
 | `<C-Backspace>` (insert) | Cancella parola precedente |
 | `:Format` | Formatta il buffer via LSP |
 | `:OR` | Organizza import via LSP |

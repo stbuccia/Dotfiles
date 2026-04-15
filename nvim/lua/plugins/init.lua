@@ -8,6 +8,21 @@ return {
         lazy = false,
         priority = 1000,
     },
+    {
+        "rcarriga/nvim-notify",
+        lazy = false,
+        priority = 900,
+        config = function()
+            local notify = require("notify")
+            notify.setup({
+                background_colour = "#2E3440",
+                stages            = "fade",
+                timeout           = 2000,
+                render            = "compact",
+            })
+            vim.notify = notify
+        end,
+    },
     { "vim-airline/vim-airline" },
 
     -- dashboard
@@ -28,6 +43,10 @@ return {
         config = function()
             local fzf = require("fzf-lua")
             fzf.setup({
+                files = {
+                    fd_opts = "--type f --hidden --exclude .git",
+                    cmd     = "fdfind --type f --hidden --exclude .git",
+                },
                 winopts = {
                     height = 0.85,
                     width  = 0.85,
@@ -169,6 +188,19 @@ return {
         },
     },
 
+    -- lazydocker
+    {
+        "mgierada/lazydocker.nvim",
+        lazy = true,
+        dependencies = { "akinsho/toggleterm.nvim" },
+        keys = {
+            { "<leader>ld", "<cmd>Lazydocker<cr>", desc = "LazyDocker" },
+        },
+        config = function()
+            require("lazydocker").setup({})
+        end,
+    },
+
     -- utilities
     { "mileszs/ack.vim" },
     { "stevearc/aerial.nvim" },
@@ -185,25 +217,25 @@ return {
                 -- abilita un'icona di fallback per i tipi non riconosciuti
                 default = true,
                 -- override per estensioni che a volte mancano
-                override_by_extension = {
-                    ["md"]   = { icon = "", color = "#519aba", name = "Markdown" },
-                    ["mdx"]  = { icon = "", color = "#519aba", name = "Mdx" },
-                    ["lua"]  = { icon = "", color = "#51a0cf", name = "Lua" },
-                    ["php"]  = { icon = "", color = "#a074c4", name = "Php" },
-                    ["js"]   = { icon = "", color = "#cbcb41", name = "Js" },
-                    ["ts"]   = { icon = "", color = "#519aba", name = "Ts" },
-                    ["json"] = { icon = "", color = "#cbcb41", name = "Json" },
-                    ["css"]  = { icon = "", color = "#42a5f5", name = "Css" },
-                    ["html"] = { icon = "", color = "#e44d26", name = "Html" },
-                    ["env"]  = { icon = "", color = "#faf743", name = "Env" },
-                    ["yml"]  = { icon = "", color = "#6d8086", name = "Yml" },
-                    ["yaml"] = { icon = "", color = "#6d8086", name = "Yaml" },
-                    ["toml"] = { icon = "", color = "#9c4221", name = "Toml" },
-                    ["sh"]   = { icon = "", color = "#4d5a5e", name = "Sh" },
-                    ["vim"]  = { icon = "", color = "#019833", name = "Vim" },
-                    ["lock"] = { icon = "", color = "#bbbbbb", name = "Lock" },
-                    ["git"]  = { icon = "", color = "#f14c28", name = "Git" },
-                },
+                -- override_by_extension = {
+                --     ["md"]   = { icon = "", color = "#519aba", name = "Markdown" },
+                --     ["mdx"]  = { icon = "", color = "#519aba", name = "Mdx" },
+                --     ["lua"]  = { icon = "", color = "#51a0cf", name = "Lua" },
+                --     ["php"]  = { icon = "", color = "#a074c4", name = "Php" },
+                --     ["js"]   = { icon = "", color = "#cbcb41", name = "Js" },
+                --     ["ts"]   = { icon = "", color = "#519aba", name = "Ts" },
+                --     ["json"] = { icon = "", color = "#cbcb41", name = "Json" },
+                --     ["css"]  = { icon = "", color = "#42a5f5", name = "Css" },
+                --     ["html"] = { icon = "", color = "#e44d26", name = "Html" },
+                --     ["env"]  = { icon = "", color = "#faf743", name = "Env" },
+                --     ["yml"]  = { icon = "", color = "#6d8086", name = "Yml" },
+                --     ["yaml"] = { icon = "", color = "#6d8086", name = "Yaml" },
+                --     ["toml"] = { icon = "", color = "#9c4221", name = "Toml" },
+                --     ["sh"]   = { icon = "", color = "#4d5a5e", name = "Sh" },
+                --     ["vim"]  = { icon = "", color = "#019833", name = "Vim" },
+                --     ["lock"] = { icon = "", color = "#bbbbbb", name = "Lock" },
+                --     ["git"]  = { icon = "", color = "#f14c28", name = "Git" },
+                -- },
             })
         end,
     },
@@ -242,7 +274,7 @@ return {
 
             vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
             vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
-            vim.keymap.set({ "n", "t" }, "<C-l>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
+            vim.keymap.set({ "n", "t" }, "<C-l>", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
 
             vim.keymap.set({ "n", "x" }, "go",  function() return require("opencode").operator("@this ") end,        { desc = "Add range to opencode", expr = true })
             vim.keymap.set("n",          "goo", function() return require("opencode").operator("@this ") .. "_" end, { desc = "Add line to opencode", expr = true })

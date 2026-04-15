@@ -11,6 +11,7 @@ require("nvim-tree").setup({
     sort = {
         sorter = "case_sensitive",
     },
+    sync_root_with_cwd = true,
     view = {
         width = 35,
         side  = "left",
@@ -19,20 +20,20 @@ require("nvim-tree").setup({
         group_empty = true,
         icons = {
             show = {
-                file        = true,
-                folder      = true,
+                file         = true,
+                folder       = true,
                 folder_arrow = true,
-                git         = true,
+                -- git          = true,
             },
         },
     },
     filters = {
-        dotfiles = false,   -- mostra i dotfile (come NERDTree default)
+        dotfiles = false,
     },
-    git = {
-        enable = true,
-        ignore = false,
-    },
+    -- git = {
+    --     enable = true,
+    --     ignore = false,
+    -- },
     actions = {
         open_file = {
             quit_on_open = false,
@@ -41,10 +42,11 @@ require("nvim-tree").setup({
             },
         },
     },
-    -- Sincronizza la root con la directory del file corrente
     update_focused_file = {
         enable      = true,
-        update_root = false,
+        update_root = {
+            enable = true,
+        },
     },
 })
 
