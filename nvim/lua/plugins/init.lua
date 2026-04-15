@@ -5,75 +5,241 @@ return {
 
     -- UI
     {  "nordtheme/vim",
-        lazy = false,          -- carica all’avvio
-        priority = 1000,       -- garantisce il caricamento prima di altri colori
+        lazy = false,
+        priority = 1000,
     },
     { "vim-airline/vim-airline" },
 
-    -- fuzzy finder
-    { "junegunn/fzf",   run = "./install --all", dir = "~/.fzf" },
+    -- dashboard
+    {
+        "goolord/alpha-nvim",
+        event = "VimEnter",
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+        config = function()
+            require("alpha_config")
+        end,
+    },
 
-    -- file explorer
-    { "scrooloose/nerdtree" },
+    -- fuzzy finder
+    {
+        "ibhagwan/fzf-lua",
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+        lazy = false,
+        config = function()
+            local fzf = require("fzf-lua")
+            fzf.setup({
+                winopts = {
+                    height = 0.85,
+                    width  = 0.85,
+                    preview = {
+                        layout = "horizontal",
+                        ratio  = 60,
+                    },
+                },
+                fzf_opts = {
+                    ["--layout"] = "reverse",
+                },
+            })
+
+            -- keymaps
+            local map = function(lhs, rhs, desc)
+                vim.keymap.set("n", lhs, rhs, { noremap = true, silent = true, desc = desc })
+            end
+
+            map("<C-p>",      fzf.files,             "FZF: trova file")
+            map("<leader>fg", fzf.live_grep,          "FZF: live grep (ripgrep)")
+            map("<leader>fd", function()
+                fzf.files({
+                    prompt   = "Directory> ",
+                    fd_opts  = "--type d --hidden --exclude .git",
+                    actions  = {
+                        ["default"] = function(selected)
+                            if selected and selected[1] then
+                                local dir = selected[1]:match("^(.+)$")
+                                fzf.live_grep({ cwd = dir })
+                            end
+                        end,
+                    },
+                })
+            end, "FZF: live grep in directory")
+            map("<leader>fb", fzf.buffers,            "FZF: buffer aperti")
+            map("<leader>fh", fzf.help_tags,          "FZF: help tags")
+            map("<leader>fr", fzf.oldfiles,           "FZF: file recenti")
+            map("<leader>fs", fzf.lsp_document_symbols, "FZF: simboli documento")
+            map("<leader>fw", fzf.grep_cword,         "FZF: cerca parola sotto cursore")
+        end,
+    },
+
+    -- file explorer (nvim-tree al posto di NERDTree)
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+        config = function()
+            require("nvim_tree_config")
+        end,
+    },
 
     -- git gutter
     { "airblade/vim-gitgutter" },
 
-    -- LSP / completion
-    { "prabirshrestha/vim-lsp" },
-    { "neoclide/coc.nvim", branch = "release" },
+    -- LSP nativo
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            -- mason: installa i server automaticamente
+            { "williamboman/mason.nvim",           config = true },
+            { "williamboman/mason-lspconfig.nvim", config = true },
+            -- LuaSnip (sorgente snippet per nvim-cmp)
+            { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "rafamadriz/friendly-snippets" },
+            -- sorgenti nvim-cmp
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "hrsh7th/cmp-cmdline" },
+            { "hrsh7th/nvim-cmp" },
+        },
+        config = function()
+            require("lsp_config")
+        end,
+    },
 
-    -- Copilot
-    { "github/copilot.vim" },
-    { "CopilotC-Nvim/CopilotChat.nvim" },
+    -- Copilot (versione Lua)
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot_lua_config")
+        end,
+    },
+    -- sorgente copilot per nvim-cmp
+    {
+        "zbirenbaum/copilot-cmp",
+        dependencies = { "zbirenbaum/copilot.lua" },
+        config = function()
+            require("copilot_cmp").setup()
+        end,
+    },
+    -- CopilotChat aggiornato
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "main",
+        dependencies = {
+            { "zbirenbaum/copilot.lua" },
+            { "nvim-lua/plenary.nvim" },
+        },
+        opts = {
+            debug = false,
+        },
+    },
+
+    -- DAP (debugger)
+    {
+        "mfussenegger/nvim-dap",
+        config = function()
+            require("dap_config")
+        end,
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio",
+        },
+    },
+
+    -- lazygit
+    {
+        "kdheepak/lazygit.nvim",
+        lazy = true,
+        cmd = {
+            "LazyGit",
+            "LazyGitConfig",
+            "LazyGitCurrentFile",
+            "LazyGitFilter",
+            "LazyGitFilterCurrentFile",
+        },
+        dependencies = { "nvim-lua/plenary.nvim" },
+        keys = {
+            { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+        },
+    },
 
     -- utilities
     { "mileszs/ack.vim" },
     { "stevearc/aerial.nvim" },
 
-    -- nvim‑only
-    { "nvim-lualine/lualine.nvim",   cond = vim.fn.has "nvim" == 1 },
-    { "liuchengxu/vista.vim",        cond = vim.fn.has "nvim" == 1 },
-    { "kyazdani42/nvim-web-devicons",cond = vim.fn.has "nvim" == 1 },
-    { "akinsho/toggleterm.nvim",     cond = vim.fn.has "nvim" == 1 },
-
-    -- ... aggiungi qui gli altri plugin commentati se li riattivi
+    -- nvim-only
+    { "nvim-lualine/lualine.nvim",    cond = vim.fn.has("nvim") == 1 },
+    { "liuchengxu/vista.vim",         cond = vim.fn.has("nvim") == 1 },
     {
-        'nvim-treesitter/nvim-treesitter',
-        lazy = false,
-        branch = 'master',
-        build = ':TSUpdate',
-        config = function() 
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "php", "javascript", "html", "css" },
-                auto_install = true,
-                highlight = {
-                    enable = true,
-                },
-                indent = {
-                    enable = true,
+        "kyazdani42/nvim-web-devicons",
+        cond   = vim.fn.has("nvim") == 1,
+        lazy   = false,
+        config = function()
+            require("nvim-web-devicons").setup({
+                -- abilita un'icona di fallback per i tipi non riconosciuti
+                default = true,
+                -- override per estensioni che a volte mancano
+                override_by_extension = {
+                    ["md"]   = { icon = "", color = "#519aba", name = "Markdown" },
+                    ["mdx"]  = { icon = "", color = "#519aba", name = "Mdx" },
+                    ["lua"]  = { icon = "", color = "#51a0cf", name = "Lua" },
+                    ["php"]  = { icon = "", color = "#a074c4", name = "Php" },
+                    ["js"]   = { icon = "", color = "#cbcb41", name = "Js" },
+                    ["ts"]   = { icon = "", color = "#519aba", name = "Ts" },
+                    ["json"] = { icon = "", color = "#cbcb41", name = "Json" },
+                    ["css"]  = { icon = "", color = "#42a5f5", name = "Css" },
+                    ["html"] = { icon = "", color = "#e44d26", name = "Html" },
+                    ["env"]  = { icon = "", color = "#faf743", name = "Env" },
+                    ["yml"]  = { icon = "", color = "#6d8086", name = "Yml" },
+                    ["yaml"] = { icon = "", color = "#6d8086", name = "Yaml" },
+                    ["toml"] = { icon = "", color = "#9c4221", name = "Toml" },
+                    ["sh"]   = { icon = "", color = "#4d5a5e", name = "Sh" },
+                    ["vim"]  = { icon = "", color = "#019833", name = "Vim" },
+                    ["lock"] = { icon = "", color = "#bbbbbb", name = "Lock" },
+                    ["git"]  = { icon = "", color = "#f14c28", name = "Git" },
                 },
             })
-        end
+        end,
     },
+    { "akinsho/toggleterm.nvim",      cond = vim.fn.has("nvim") == 1 },
+
+    -- treesitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        lazy = false,
+        branch = "master",
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "c", "lua", "vim", "vimdoc", "query",
+                    "markdown", "markdown_inline",
+                    "php", "javascript", "typescript",
+                    "html", "css",
+                },
+                auto_install = true,
+                highlight = { enable = true },
+                indent    = { enable = true },
+            })
+        end,
+    },
+
+    -- opencode.nvim
     {
         "NickvanDyke/opencode.nvim",
         dependencies = {
-            -- Recommended for `ask()` and `select()`.
-            -- Required for `snacks` provider.
-            ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
             { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
         },
         config = function()
-            ---@type opencode.Opts
-            vim.g.opencode_opts = {
-                -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition" on the type or field.
-            }
-
-            -- Required for `opts.events.reload`.
+            vim.g.opencode_opts = {}
             vim.o.autoread = true
 
-            -- Recommended/example keymaps.
             vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
             vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
             vim.keymap.set({ "n", "t" }, "<C-l>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
@@ -84,17 +250,18 @@ return {
             vim.keymap.set("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "Scroll opencode up" })
             vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "Scroll opencode down" })
 
-            -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o…".
             vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
             vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
         end,
     },
+
+    -- commenti
     {
-        'numToStr/Comment.nvim',
-        dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
+        "numToStr/Comment.nvim",
+        dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
         config = function()
-            require('Comment').setup({
-                pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+            require("Comment").setup({
+                pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
             })
         end,
     },

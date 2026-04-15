@@ -38,7 +38,7 @@
 #max_concurrency = 5
 # Additional git repositories to pull
 repos = [
-    "~/.pass-store"
+    # "~/.pass-store"
 ]
 
 # Don't pull the predefined git repos

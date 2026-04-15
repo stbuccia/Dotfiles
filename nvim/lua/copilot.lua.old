@@ -1,0 +1,7 @@
+-- Questo file era usato da github/copilot.vim per configurare i filetypes
+-- tramite vim.g.copilot_filetypes.
+--
+-- Con il passaggio a zbirenbaum/copilot.lua i filetypes sono ora
+-- configurati in lua/copilot_lua_config.lua (opzione `filetypes`).
+-- Questo file è mantenuto vuoto per compatibilità con require("copilot")
+-- in init.lua, che è stato rimosso.
