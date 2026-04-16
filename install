@@ -13,6 +13,9 @@
 [[ -f ~/nvim ]] && rm -rf ~/nvim
 [[ -f ~/.config/kitty ]] && rm -rf ~/.config/kitty
 [[ -f ~/.config/topgrade.toml ]] && rm ~/.config/topgrade.toml
+[[ -f ~/.config/hypr ]] && rm -rf ~/.config/hypr
+[[ -f ~/.config/noctalia ]] && rm -rf ~/.config/noctalia
+[[ -f ~/.config/starship.toml ]] && rm ~/.config/starship.toml
 
 #li ricostruisco facendo dei link simbolici
 ln -s ~/Dotfiles/vim ~/.vim
@@ -22,6 +25,9 @@ ln -s ~/Dotfiles/emoji-alias.bash ~/.emoji-alias.bash
 ln -s ~/Dotfiles/nvim ~/.config
 ln -s ~/Dotfiles/config/kitty ~/.config
 ln -s ~/Dotfiles/config/topgrade.toml ~/.config
+ln -s ~/Dotfiles/config/hypr ~/.config
+ln -s ~/Dotfiles/config/noctalia ~/.config
+ln -s ~/Dotfiles/config/starship/starship.toml ~/.config/starship.toml
 
 #installa vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

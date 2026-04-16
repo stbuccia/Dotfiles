@@ -45,7 +45,7 @@ return {
             fzf.setup({
                 files = {
                     fd_opts = "--type f --hidden --exclude .git",
-                    cmd     = "fdfind --type f --hidden --exclude .git",
+                    cmd     = "fd --type f --hidden --exclude .git",
                 },
                 winopts = {
                     height = 0.85,
@@ -144,17 +144,17 @@ return {
         end,
     },
     -- CopilotChat aggiornato
-    {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        branch = "main",
-        dependencies = {
-            { "zbirenbaum/copilot.lua" },
-            { "nvim-lua/plenary.nvim" },
-        },
-        opts = {
-            debug = false,
-        },
-    },
+    --{
+    --    "CopilotC-Nvim/CopilotChat.nvim",
+    --    branch = "main",
+    --    dependencies = {
+    --        { "zbirenbaum/copilot.lua" },
+    --        { "nvim-lua/plenary.nvim" },
+    --    },
+    --    opts = {
+    --        debug = false,
+    --    },
+    --},
 
     -- DAP (debugger)
     {
@@ -288,6 +288,10 @@ return {
     },
 
     -- commenti
+    {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        opts = { enable_autocmd = false },
+    },
     {
         "numToStr/Comment.nvim",
         dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },

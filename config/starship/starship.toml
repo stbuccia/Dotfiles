@@ -1,0 +1,169 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+[╭─](bold blue)$os$username$hostname$directory$git_branch$git_status$git_state$fill$cmd_duration$python$nodejs$rust$java$lua$ruby$php$swift$kotlin$zig$time
+[╰─](bold blue)$character"""
+
+[fill]
+symbol = ' '
+
+[os]
+disabled = false
+style = "bold blue"
+
+[username]
+show_always = true
+disabled = false
+format = "[$user]($style)"
+style_user = "bold cyan"
+
+[hostname]
+ssh_only = false
+disabled = false
+format = "[@$hostname]($style) "
+style = "bold cyan"
+ssh_symbol = " "
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "bold cyan"
+truncation_length = 4
+truncate_to_repo = true
+read_only = " 󰌾"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "bold purple"
+symbol = " "
+
+[git_status]
+format = '([ $staged](bold green)[ $modified](bold yellow)[ $deleted](bold red)[ $untracked](bold blue)[$ahead_behind]($style) )'
+style = "bold white"
+staged = '+$count'
+modified = '~$count'
+deleted = '-$count'
+untracked = '?$count'
+ahead = '⇡$count'
+behind = '⇣$count'
+diverged = '⇡$ahead_count⇣$behind_count'
+
+[cmd_duration]
+min_time = 2_000
+format = "[ took $duration]($style) "
+style = "bold yellow"
+
+[time]
+disabled = false
+format = "[ $time]($style)"
+style = "bold dimmed white"
+time_format = "%H:%M:%S"
+
+[python]
+symbol = " "
+format = "[$symbol]($style)"
+style = "bold yellow"
+detect_files = ["requirements.txt", "pyproject.toml", "setup.py", "setup.cfg", "Pipfile", ".python-version", "poetry.lock"]
+detect_extensions = ["py"]
+
+[nodejs]
+symbol = " "
+format = "[$symbol]($style)"
+style = "bold green"
+detect_files = ["package.json", ".nvmrc", ".node-version"]
+detect_extensions = ["js", "mjs", "cjs", "ts", "tsx", "jsx"]
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+AOSC = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Elementary = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Ios = "󰀷 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+Zorin = " "
+
+[package]
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+format = "[$symbol]($style)"
+style = "bold purple"
+detect_files = ["composer.json"]
+detect_extensions = ["php"]
+
+[pijul_channel]
+symbol = " "
+
+[pixi]
+symbol = "󰏗 "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[xmake]
+symbol = " "
+
+[zig]
+symbol = " "

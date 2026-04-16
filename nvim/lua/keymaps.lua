@@ -29,7 +29,7 @@ end, { noremap = true, silent = true, desc = "Apri configurazione Neovim" })
 -- Cd con fzf tramite shortcut <leader>cd
 vim.keymap.set('n', '<leader>cd', function()
     local home = vim.fn.expand("~")
-    require("fzf-lua").fzf_exec("fdfind --type d --hidden --exclude .git . " .. home .. " | sed 's|" .. home .. "|~|'", {
+    require("fzf-lua").fzf_exec("fd --type d --hidden --exclude .git . " .. home .. " | sed 's|" .. home .. "|~|'", {
         prompt  = "cd> ",
         actions = {
             ["default"] = function(selected)
