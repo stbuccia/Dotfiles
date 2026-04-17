@@ -15,6 +15,8 @@
 [[ -f ~/.config/topgrade.toml ]] && rm ~/.config/topgrade.toml
 [[ -f ~/.config/hypr ]] && rm -rf ~/.config/hypr
 [[ -f ~/.config/noctalia ]] && rm -rf ~/.config/noctalia
+[[ -L ~/.config/niri ]] && rm ~/.config/niri
+[[ -d ~/.config/niri ]] && rm -rf ~/.config/niri
 [[ -f ~/.config/starship.toml ]] && rm ~/.config/starship.toml
 [[ -L ~/.config/fastfetch ]] && rm ~/.config/fastfetch
 [[ -d ~/.config/fastfetch ]] && rm -rf ~/.config/fastfetch
@@ -29,6 +31,7 @@ ln -s ~/Dotfiles/config/kitty ~/.config
 ln -s ~/Dotfiles/config/topgrade.toml ~/.config
 ln -s ~/Dotfiles/config/hypr ~/.config
 ln -s ~/Dotfiles/config/noctalia ~/.config
+ln -s ~/Dotfiles/config/niri ~/.config
 ln -s ~/Dotfiles/config/starship/starship.toml ~/.config/starship.toml
 ln -s ~/Dotfiles/config/fastfetch ~/.config/fastfetch
 

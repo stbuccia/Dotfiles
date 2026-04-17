@@ -28,7 +28,7 @@
         "showIconBackground": false,
         "sortByMostUsed": true,
         "terminalCommand": "alacritty -e",
-        "viewMode": "grid"
+        "viewMode": "list"
     },
     "audio": {
         "mprisBlacklist": [
@@ -45,15 +45,15 @@
     "bar": {
         "autoHideDelay": 500,
         "autoShowDelay": 150,
-        "backgroundOpacity": 1,
-        "barType": "framed",
+        "backgroundOpacity": 0,
+        "barType": "floating",
         "capsuleColorKey": "none",
-        "capsuleOpacity": 0,
-        "contentPadding": 0,
+        "capsuleOpacity": 1,
+        "contentPadding": 2,
         "density": "default",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
-        "fontScale": 1,
+        "fontScale": 1.1099999999999999,
         "frameRadius": 12,
         "frameThickness": 8,
         "hideOnOverview": false,
@@ -376,7 +376,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/stefano/.face",
+        "avatarImage": "/home/stefano/Immagini/avatar_3.png",
         "boxRadiusRatio": 1,
         "clockFormat": "HH:mm ddd, dd MMM",
         "clockStyle": "custom",

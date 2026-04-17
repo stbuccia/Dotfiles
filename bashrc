@@ -232,25 +232,7 @@ export PATH=$HOME/.opencode/bin:$PATH
 
 # ── Modern CLI replacements ────────────────────────────────────────────────────
 
-# bat → cat (syntax highlighting, git integration)
-if command -v bat &>/dev/null; then
-    alias cat='bat --paging=never'
-    alias catp='bat'                        # cat with paging
-    alias batman='bat --plain --paging=never' # raw output, no decorations
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-    export BAT_THEME="TwoDark"
-fi
 
-# eza → ls (icons, git status, tree view)
-if command -v eza &>/dev/null; then
-    export EZA_COLORS="di=34:fi=0:ex=32:ln=36:uu=33:gu=33:ur=33:uw=31:ux=32:gr=33:gw=31:gx=32:tr=33:tw=31:tx=32:sn=32:sb=32:da=34"
-    alias ls='eza --icons --group-directories-first'
-    alias ll='eza --icons --group-directories-first -l --git'
-    alias la='eza --icons --group-directories-first -la --git'
-    alias l='eza --icons --group-directories-first -1'
-    alias lt='eza --icons --tree --level=2'
-    alias llt='eza --icons --tree --level=3 -l --git'
-fi
 
 # zoxide → cd (frecency-based smart jump)
 if command -v zoxide &>/dev/null; then
@@ -258,10 +240,6 @@ if command -v zoxide &>/dev/null; then
     alias cd='z'
 fi
 
-# ripgrep → grep (already installed, ensure alias)
-if command -v rg &>/dev/null; then
-    alias grep='rg'
-fi
 
 # fd → find (already installed, ensure alias)
 if command -v fd &>/dev/null; then

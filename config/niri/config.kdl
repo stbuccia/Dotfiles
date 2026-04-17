@@ -1,0 +1,418 @@
+// ################################################################
+// Niri configuration - migrated from Hyprland
+// ################################################################
+
+// ──────────────────────────────────────────────────────────────
+// OUTPUTS / MONITORS
+// ──────────────────────────────────────────────────────────────
+
+output "eDP-1" {
+    mode "1920x1080@60.000"
+    position x=0 y=0
+    scale 1.0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@60.000"
+    position x=1920 y=0
+    scale 1.0
+}
+
+// ──────────────────────────────────────────────────────────────
+// AUTOSTART
+// ──────────────────────────────────────────────────────────────
+
+// Noctalia desktop shell (bar, launcher, notifications, lock screen)
+spawn-at-startup "qs" "-c" "noctalia-shell"
+
+// Wallpaper
+spawn-at-startup "swaybg" "-i" "/home/stefano/Dotfiles/backgrounds" "-m" "fill"
+
+// Polkit agent
+spawn-at-startup "systemctl" "--user" "start" "hyprpolkitagent"
+
+// XWayland support
+spawn-at-startup "xwayland-satellite"
+
+// ──────────────────────────────────────────────────────────────
+// ENVIRONMENT VARIABLES
+// ──────────────────────────────────────────────────────────────
+
+environment {
+    XCURSOR_SIZE "24"
+    XCURSOR_THEME "default"
+    // Tell apps to use Wayland natively
+    QT_QPA_PLATFORM "wayland"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    MOZ_ENABLE_WAYLAND "1"
+    // XWayland display (xwayland-satellite)
+    DISPLAY ":0"
+}
+
+// ──────────────────────────────────────────────────────────────
+// INPUT
+// ──────────────────────────────────────────────────────────────
+
+input {
+    keyboard {
+        xkb {
+            layout "it"
+            variant "us"
+        }
+    }
+
+    touchpad {
+        tap
+        // natural-scroll  // omesso = scroll normale (non invertito)
+        accel-speed 0.0
+        accel-profile "flat"
+    }
+
+    mouse {
+        accel-speed 0.0
+        accel-profile "flat"
+    }
+
+    focus-follows-mouse max-scroll-amount="0%"
+    warp-mouse-to-focus
+}
+
+// ──────────────────────────────────────────────────────────────
+// WORKSPACES
+// ──────────────────────────────────────────────────────────────
+
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "4"
+workspace "5"
+workspace "6"
+
+// ──────────────────────────────────────────────────────────────
+// LAYOUT
+// ──────────────────────────────────────────────────────────────
+
+layout {
+    // Gaps matching Hyprland: gaps_in=5, gaps_out=20
+    gaps 20
+
+    // Active and inactive border colors (matching Hyprland gradient)
+    // Active: cyan → green gradient. Niri supports single color only,
+    // so we pick the cyan (#33ccff) as dominant active color.
+    focus-ring {
+        width 2
+        active-color "#33ccffee"
+        inactive-color "#595959aa"
+    }
+
+    // No separate border (focus-ring handles it)
+    border {
+        off
+    }
+
+    // Preset column widths
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    // Center the focused column on screen (equivalent to Hyprland dwindle centering)
+    center-focused-column "never"
+
+    // Screen edges struts (equivalent to gaps_out)
+    struts {
+        left 15
+        right 15
+        top 15
+        bottom 15
+    }
+}
+
+// ──────────────────────────────────────────────────────────────
+// CURSOR
+// ──────────────────────────────────────────────────────────────
+
+
+// ──────────────────────────────────────────────────────────────
+// WINDOW DECORATIONS / LOOK AND FEEL
+// ──────────────────────────────────────────────────────────────
+
+// Window corner rounding (like Hyprland rounding=10)
+prefer-no-csd
+
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+// Shadow for all windows
+window-rule {
+    shadow {
+        on
+        softness 15
+        spread 5
+        offset x=0 y=4
+        color "#1a1a1aee"
+    }
+}
+
+// ──────────────────────────────────────────────────────────────
+// ANIMATIONS
+// ──────────────────────────────────────────────────────────────
+
+animations {
+    window-open {
+        duration-ms 250
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-cubic"
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    // Horizontal workspace switch
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    // Config reload notification
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-cubic"
+    }
+}
+
+// ──────────────────────────────────────────────────────────────
+// WINDOW RULES
+// ──────────────────────────────────────────────────────────────
+
+// Suppress maximize requests (equivalent to Hyprland windowrule suppress_event)
+window-rule {
+    match is-focused=false
+    opacity 1.0
+}
+
+// Convert fullscreen requests to maximized
+window-rule {
+    open-fullscreen false
+    open-maximized true
+}
+
+// Telegram → workspace 4
+window-rule {
+    match app-id="org.telegram.desktop"
+    open-on-workspace "4"
+}
+
+// Float dialog-like windows
+window-rule {
+    match is-floating=true
+    shadow {
+        on
+        softness 20
+        spread 8
+        offset x=0 y=6
+        color "#1a1a1aee"
+    }
+}
+
+// ──────────────────────────────────────────────────────────────
+// LID SWITCH
+// ──────────────────────────────────────────────────────────────
+
+// niri gestisce già automaticamente lo spegnimento del display al
+// chiusura del coperchio. Questi hook servono per azioni aggiuntive.
+switch-events {
+    lid-close { spawn "bash" "-c" "niri msg output eDP-1 off"; }
+    lid-open  { spawn "bash" "-c" "niri msg output eDP-1 on"; }
+}
+
+// ──────────────────────────────────────────────────────────────
+// KEYBINDINGS
+// ──────────────────────────────────────────────────────────────
+
+binds {
+    // ── Applications ──────────────────────────────────────────
+
+    // Terminal
+    Super+T { spawn "kitty"; }
+
+    // File manager
+    Super+E { spawn "dolphin"; }
+
+    // Overview
+    Super+W { toggle-overview; }
+
+    // Noctalia launcher toggle (Super+Space in Hyprland)
+    Super+Space { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+
+    // Lock screen
+    Super+Escape { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+
+    // ── Window management ─────────────────────────────────────
+
+    // Close focused window
+    Super+Q { close-window; }
+
+    // Toggle fullscreen
+    Super+M { maximize-column; }
+    Super+Shift+M { fullscreen-window; }
+
+    // Toggle floating
+    Super+V { toggle-window-floating; }
+
+    // Center the focused column
+    Super+C { center-column; }
+
+    // ── Focus movement (vim keys + arrows) ───────────────────
+
+    Super+H { focus-column-left; }
+    Super+Left { focus-column-left; }
+
+    Super+L { focus-column-right; }
+    Super+Right { focus-column-right; }
+
+    Super+K { focus-window-up; }
+    Super+Up { focus-window-up; }
+
+    Super+J { focus-window-down; }
+    Super+Down { focus-window-down; }
+
+    // ── Window movement ───────────────────────────────────────
+
+    Super+Shift+H { move-column-left; }
+    Super+Shift+Left { move-column-left; }
+
+    Super+Shift+L { move-column-right; }
+    Super+Shift+Right { move-column-right; }
+
+    Super+Shift+K { move-window-up; }
+    Super+Shift+Up { move-window-up; }
+
+    Super+Shift+J { move-window-down; }
+    Super+Shift+Down { move-window-down; }
+
+    // ── Column width / layout ─────────────────────────────────
+
+    // Cycle preset column widths (like Super+R in niri defaults)
+    Super+BracketLeft { consume-or-expel-window-left; }
+    Super+BracketRight { consume-or-expel-window-right; }
+    Super+Comma { consume-window-into-column; }
+    Super+Period { expel-window-from-column; }
+
+    Super+F { maximize-column; }
+    Super+Shift+F { fullscreen-window; }
+
+    Super+Minus { set-column-width "-10%"; }
+    Super+Equal { set-column-width "+10%"; }
+    Super+Shift+Minus { set-window-height "-10%"; }
+    Super+Shift+Equal { set-window-height "+10%"; }
+
+    // ── Workspaces (numbered 1–10) ────────────────────────────
+
+    Super+1 { focus-workspace 1; }
+    Super+2 { focus-workspace 2; }
+    Super+3 { focus-workspace 3; }
+    Super+4 { focus-workspace 4; }
+    Super+5 { focus-workspace 5; }
+    Super+6 { focus-workspace 6; }
+    Super+7 { focus-workspace 7; }
+    Super+8 { focus-workspace 8; }
+    Super+9 { focus-workspace 9; }
+    Super+0 { focus-workspace 10; }
+
+    Super+Shift+1 { move-column-to-workspace 1; }
+    Super+Shift+2 { move-column-to-workspace 2; }
+    Super+Shift+3 { move-column-to-workspace 3; }
+    Super+Shift+4 { move-column-to-workspace 4; }
+    Super+Shift+5 { move-column-to-workspace 5; }
+    Super+Shift+6 { move-column-to-workspace 6; }
+    Super+Shift+7 { move-column-to-workspace 7; }
+    Super+Shift+8 { move-column-to-workspace 8; }
+    Super+Shift+9 { move-column-to-workspace 9; }
+    Super+Shift+0 { move-column-to-workspace 10; }
+
+    // Scroll through workspaces (like Super+scroll in Hyprland)
+    Super+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Super+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+
+    // Move workspace order
+    Super+Shift+U { move-workspace-down; }
+    Super+Shift+I { move-workspace-up; }
+
+    // Navigate between workspaces with U/I
+    Super+U { focus-workspace-down; }
+    Super+I { focus-workspace-up; }
+
+    // Navigate between workspaces with Enter/Backspace
+    Super+Return { focus-workspace-down; }
+    Super+BackSpace { focus-workspace-up; }
+
+    // Move window to next/prev workspace with Enter/Backspace
+    Super+Shift+Return { move-column-to-workspace-down; }
+    Super+Shift+BackSpace { move-column-to-workspace-up; }
+
+    // Jump to previous workspace
+    Super+Tab { focus-workspace-previous; }
+
+    // ── Multi-monitor focus ───────────────────────────────────
+
+    Super+Ctrl+Shift+H { move-column-to-monitor-left; }
+    Super+Ctrl+Shift+L { move-column-to-monitor-right; }
+
+    // ── Mouse drag (move / resize) ────────────────────────────
+    // (configurato fuori da binds, nel blocco bind-mouse sotto)
+
+    // ── Multimedia / brightness keys ─────────────────────────
+
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute         allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "5%-"; }
+
+    XF86AudioNext  allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPrev  allow-when-locked=true { spawn "playerctl" "previous"; }
+    XF86AudioPlay  allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPause allow-when-locked=true { spawn "playerctl" "play-pause"; }
+
+    // ── Screenshots ───────────────────────────────────────────
+
+    Print { screenshot; }
+    Alt+Print { screenshot-window; }
+    Ctrl+Print { screenshot-screen; }
+
+    // ── Niri misc ─────────────────────────────────────────────
+
+    // Show keybinds overlay
+    Super+Shift+Slash { show-hotkey-overlay; }
+
+    // Exit niri
+    Super+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+}
+// Nota: Super+MouseLeft/Right per move/resize sono gesti nativi in niri,
+// non richiedono binding esplicito.
