@@ -648,9 +648,9 @@
     },
     "ui": {
         "boxBorderEnabled": false,
-        "fontDefault": "Sans Serif",
+        "fontDefault": "Noto Sans",
         "fontDefaultScale": 1,
-        "fontFixed": "monospace",
+        "fontFixed": "FiraMono Nerd Font Mono",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": false,
