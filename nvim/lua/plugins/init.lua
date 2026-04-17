@@ -4,7 +4,8 @@ return {
     { "sheerun/vim-polyglot" },
 
     -- UI
-    {  "nordtheme/vim",
+    {
+        "nordtheme/vim",
         lazy = false,
         priority = 1000,
     },
@@ -24,6 +25,20 @@ return {
         end,
     },
     { "vim-airline/vim-airline" },
+
+    -- project management
+    {
+        "ahmedkhalf/project.nvim",
+        lazy = false,
+        config = function()
+            require("project_nvim").setup({
+                detection_methods = { "pattern", "lsp" },
+                patterns = { ".git", "Makefile", "package.json", "Cargo.toml", "pyproject.toml" },
+                show_hidden = false,
+                silent_chdir = true,
+            })
+        end,
+    },
 
     -- dashboard
     {
@@ -48,8 +63,8 @@ return {
                     cmd     = "fdfind --type f --hidden --exclude .git",
                 },
                 winopts = {
-                    height = 0.85,
-                    width  = 0.85,
+                    height  = 0.85,
+                    width   = 0.85,
                     preview = {
                         layout = "horizontal",
                         ratio  = 60,
@@ -65,13 +80,13 @@ return {
                 vim.keymap.set("n", lhs, rhs, { noremap = true, silent = true, desc = desc })
             end
 
-            map("<C-p>",      fzf.files,             "FZF: trova file")
-            map("<leader>fg", fzf.live_grep,          "FZF: live grep (ripgrep)")
+            map("<C-p>", fzf.files, "FZF: trova file")
+            map("<leader>fg", fzf.live_grep, "FZF: live grep (ripgrep)")
             map("<leader>fd", function()
                 fzf.files({
-                    prompt   = "Directory> ",
-                    fd_opts  = "--type d --hidden --exclude .git",
-                    actions  = {
+                    prompt  = "Directory> ",
+                    fd_opts = "--type d --hidden --exclude .git",
+                    actions = {
                         ["default"] = function(selected)
                             if selected and selected[1] then
                                 local dir = selected[1]:match("^(.+)$")
@@ -81,11 +96,11 @@ return {
                     },
                 })
             end, "FZF: live grep in directory")
-            map("<leader>fb", fzf.buffers,            "FZF: buffer aperti")
-            map("<leader>fh", fzf.help_tags,          "FZF: help tags")
-            map("<leader>fr", fzf.oldfiles,           "FZF: file recenti")
+            map("<leader>fb", fzf.buffers, "FZF: buffer aperti")
+            map("<leader>fh", fzf.help_tags, "FZF: help tags")
+            map("<leader>fr", fzf.oldfiles, "FZF: file recenti")
             map("<leader>fs", fzf.lsp_document_symbols, "FZF: simboli documento")
-            map("<leader>fw", fzf.grep_cword,         "FZF: cerca parola sotto cursore")
+            map("<leader>fw", fzf.grep_cword, "FZF: cerca parola sotto cursore")
         end,
     },
 
@@ -111,7 +126,7 @@ return {
             { "williamboman/mason.nvim",           config = true },
             { "williamboman/mason-lspconfig.nvim", config = true },
             -- LuaSnip (sorgente snippet per nvim-cmp)
-            { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+            { "L3MON4D3/LuaSnip",                  version = "v2.*", build = "make install_jsregexp" },
             { "saadparwaiz1/cmp_luasnip" },
             { "rafamadriz/friendly-snippets" },
             -- sorgenti nvim-cmp
@@ -206,8 +221,8 @@ return {
     { "stevearc/aerial.nvim" },
 
     -- nvim-only
-    { "nvim-lualine/lualine.nvim",    cond = vim.fn.has("nvim") == 1 },
-    { "liuchengxu/vista.vim",         cond = vim.fn.has("nvim") == 1 },
+    { "nvim-lualine/lualine.nvim", cond = vim.fn.has("nvim") == 1 },
+    { "liuchengxu/vista.vim",      cond = vim.fn.has("nvim") == 1 },
     {
         "kyazdani42/nvim-web-devicons",
         cond   = vim.fn.has("nvim") == 1,
@@ -239,7 +254,7 @@ return {
             })
         end,
     },
-    { "akinsho/toggleterm.nvim",      cond = vim.fn.has("nvim") == 1 },
+    { "akinsho/toggleterm.nvim", cond = vim.fn.has("nvim") == 1 },
 
     -- treesitter
     {
@@ -255,9 +270,9 @@ return {
                     "php", "javascript", "typescript",
                     "html", "css",
                 },
-                auto_install = true,
-                highlight = { enable = true },
-                indent    = { enable = true },
+                auto_install     = true,
+                highlight        = { enable = true },
+                indent           = { enable = true },
             })
         end,
     },
@@ -272,15 +287,22 @@ return {
             vim.g.opencode_opts = {}
             vim.o.autoread = true
 
-            vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
-            vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
-            vim.keymap.set({ "n", "t" }, "<C-l>", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
+            vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end,
+                { desc = "Ask opencode…" })
+            vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,
+                { desc = "Execute opencode action…" })
+            vim.keymap.set({ "n", "t" }, "<C-l>", function() require("opencode").toggle() end,
+                { desc = "Toggle opencode" })
 
-            vim.keymap.set({ "n", "x" }, "go",  function() return require("opencode").operator("@this ") end,        { desc = "Add range to opencode", expr = true })
-            vim.keymap.set("n",          "goo", function() return require("opencode").operator("@this ") .. "_" end, { desc = "Add line to opencode", expr = true })
+            vim.keymap.set({ "n", "x" }, "go", function() return require("opencode").operator("@this ") end,
+                { desc = "Add range to opencode", expr = true })
+            vim.keymap.set("n", "goo", function() return require("opencode").operator("@this ") .. "_" end,
+                { desc = "Add line to opencode", expr = true })
 
-            vim.keymap.set("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "Scroll opencode up" })
-            vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "Scroll opencode down" })
+            vim.keymap.set("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,
+                { desc = "Scroll opencode up" })
+            vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end,
+                { desc = "Scroll opencode down" })
 
             vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
             vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
@@ -297,4 +319,128 @@ return {
             })
         end,
     },
+
+    -- TODO
+    {
+        "atiladefreitas/dooing",
+        config = function()
+            require("dooing").setup({
+                -- your custom config here (optional)
+                -- Core settings
+                save_path = vim.fn.stdpath("data") .. "/dooing_todos.json",
+
+                -- Window settings
+                window = {
+                    width = 55, -- Width of the floating window
+                    height = 20, -- Height of the floating window
+                    border = 'rounded', -- Border style
+                    padding = {
+                        top = 1,
+                        bottom = 1,
+                        left = 2,
+                        right = 2,
+                    },
+                },
+
+                -- To-do formatting
+                formatting = {
+                    pending = {
+                        icon = "○",
+                        format = { "icon", "notes_icon", "text", "due_date", "ect" },
+                    },
+                    in_progress = {
+                        icon = "◐",
+                        format = { "icon", "text", "due_date", "ect" },
+                    },
+                    done = {
+                        icon = "✓",
+                        format = { "icon", "notes_icon", "text", "due_date", "ect" },
+                    },
+                },
+
+                quick_keys = true, -- Quick keys window
+
+                notes = {
+                    icon = "📓",
+                },
+
+                scratchpad = {
+                    syntax_highlight = "markdown",
+                },
+
+                -- Keymaps
+                keymaps = {
+                    toggle_window = "<leader>td",
+                    new_todo = "i",
+                    toggle_todo = "x",
+                    delete_todo = "d",
+                    delete_completed = "D",
+                    close_window = "q",
+                    undo_delete = "u",
+                    add_due_date = "H",
+                    remove_due_date = "r",
+                    toggle_help = "?",
+                    toggle_tags = "t",
+                    toggle_priority = "<Space>",
+                    clear_filter = "c",
+                    edit_todo = "e",
+                    edit_tag = "e",
+                    delete_tag = "d",
+                    search_todos = "/",
+                    add_time_estimation = "T",
+                    remove_time_estimation = "R",
+                    import_todos = "I",
+                    export_todos = "E",
+                    remove_duplicates = "<leader>D",
+                    open_todo_scratchpad = "<leader>p",
+                },
+
+                calendar = {
+                    language = "en",
+                    icon = "",
+                    keymaps = {
+                        previous_day = "h",
+                        next_day = "l",
+                        previous_week = "k",
+                        next_week = "j",
+                        previous_month = "H",
+                        next_month = "L",
+                        select_day = "<CR>",
+                        close_calendar = "q",
+                    },
+                },
+
+                -- Priority settings
+                priorities = {
+                    {
+                        name = "important",
+                        weight = 4,
+                    },
+                    {
+                        name = "urgent",
+                        weight = 2,
+                    },
+                },
+                priority_groups = {
+                    high = {
+                        members = { "important", "urgent" },
+                        color = nil,
+                        hl_group = "DiagnosticError",
+                    },
+                    medium = {
+                        members = { "important" },
+                        color = nil,
+                        hl_group = "DiagnosticWarn",
+                    },
+                    low = {
+                        members = { "urgent" },
+                        color = nil,
+                        hl_group = "DiagnosticInfo",
+                    },
+                },
+                hour_score_value = 1 / 8,
+
+            })
+        end,
+    }
 }

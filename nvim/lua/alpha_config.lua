@@ -3,8 +3,17 @@
 -- Layout: header ASCII "NEOVIM" + file recenti + menu + footer
 -- ============================================================
 
-local alpha  = require("alpha")
-local themes = require("alpha.themes.theta")
+local alpha   = require("alpha")
+local themes  = require("alpha.themes.theta")
+local devicons = require("nvim-web-devicons")
+
+-- Restituisce icona + hl_group per un file dato il suo path
+local function file_icon(filepath)
+    local filename  = vim.fn.fnamemodify(filepath, ":t")
+    local ext       = vim.fn.fnamemodify(filepath, ":e")
+    local icon, hl  = devicons.get_icon(filename, ext, { default = true })
+    return icon or "", hl or "AlphaButton"
+end
 
 -- ============================================================
 -- 1. Header ASCII
@@ -54,11 +63,16 @@ local function get_recent_files()
     for _, file in ipairs(vim.v.oldfiles) do
         if #items >= 5 then break end
         if vim.fn.filereadable(file) == 1 then
-            local display  = shorten_path(file)
-            local key      = keys[#items + 1]
+            local display       = shorten_path(file)
+            local key           = keys[#items + 1]
+            local icon, icon_hl = file_icon(file)
+            -- alpha usa colonne in byte; l'icona è 3 byte (UTF-8 multibyte) + 2 spazi
+            local icon_bytes    = #icon
+            local sep           = "  "
+            local sep_bytes     = #sep
             table.insert(items, {
                 type = "button",
-                val  = "  " .. display,
+                val  = icon .. sep .. display,
                 on_press = function()
                     vim.cmd("e " .. vim.fn.fnameescape(file))
                 end,
@@ -68,7 +82,10 @@ local function get_recent_files()
                     cursor         = 3,
                     width          = 52,
                     align_shortcut = "right",
-                    hl             = "AlphaButton",
+                    hl             = {
+                        { icon_hl,       0,                           icon_bytes },
+                        { "AlphaButton", icon_bytes + sep_bytes,      icon_bytes + sep_bytes + #display },
+                    },
                     hl_shortcut    = "AlphaShortcut",
                     keymap = {
                         "n", key,
@@ -100,7 +117,72 @@ local recent_files = {
 }
 
 -- ============================================================
--- 3. Voci del menu
+-- 3. Progetti recenti (via project.nvim)
+-- ============================================================
+local function get_recent_projects()
+    local ok, project_nvim = pcall(require, "project_nvim")
+    if not ok then return {} end
+    local recent_projects = project_nvim.get_recent_projects()
+    if not recent_projects or #recent_projects == 0 then return {} end
+
+    local items = {}
+    local keys  = { "a", "b", "c", "d", "e" }
+    local folder_icon  = ""
+    local folder_bytes = #folder_icon   -- 3 byte UTF-8
+    local sep          = "  "
+    local sep_bytes    = #sep
+    for i, proj in ipairs(recent_projects) do
+        if i > 5 then break end
+        local display = shorten_path(proj)
+        local key     = keys[i]
+        table.insert(items, {
+            type = "button",
+            val  = folder_icon .. sep .. display,
+            on_press = function()
+                vim.cmd("cd " .. vim.fn.fnameescape(proj))
+                vim.cmd("NvimTreeOpen")
+            end,
+            opts = {
+                position       = "center",
+                shortcut       = "[" .. key .. "]",
+                cursor         = 3,
+                width          = 52,
+                align_shortcut = "right",
+                hl             = {
+                    { "AlphaFolder", 0,                              folder_bytes },
+                    { "AlphaButton", folder_bytes + sep_bytes,       folder_bytes + sep_bytes + #display },
+                },
+                hl_shortcut    = "AlphaShortcut",
+                keymap = {
+                    "n", key,
+                    ":cd " .. vim.fn.fnameescape(proj) .. " | NvimTreeOpen<CR>",
+                    { noremap = true, silent = true, nowait = true },
+                },
+            },
+        })
+    end
+    return items
+end
+
+local recent_projects = {
+    type = "group",
+    val = function()
+        local projs = get_recent_projects()
+        if #projs == 0 then
+            return {
+                { type = "text", val = "  Nessun progetto recente", opts = { position = "center", hl = "AlphaFooter" } },
+            }
+        end
+        return vim.list_extend(
+            { { type = "text", val = "  Progetti recenti", opts = { position = "center", hl = "AlphaShortcut" } } },
+            projs
+        )
+    end,
+    opts = { spacing = 0 },
+}
+
+-- ============================================================
+-- 4. Voci del menu
 -- ============================================================
 local function button(sc, icon, txt, keycmd)
     local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
@@ -147,7 +229,7 @@ local buttons = {
 }
 
 -- ============================================================
--- 4. Footer con statistiche plugin
+-- 6. Footer con statistiche plugin
 -- ============================================================
 local function footer()
     local stats   = require("lazy").stats()
@@ -167,14 +249,14 @@ local footer_section = {
 }
 
 -- ============================================================
--- 5. Padding helper
+-- 7. Padding helper
 -- ============================================================
 local function pad(n)
     return { type = "padding", val = n }
 end
 
 -- ============================================================
--- 6. Layout finale
+-- 8. Layout finale
 -- ============================================================
 alpha.setup({
     layout = {
@@ -182,6 +264,8 @@ alpha.setup({
         header,
         pad(1),
         recent_files,
+        pad(1),
+        recent_projects,
         pad(1),
         buttons,
         pad(1),
@@ -191,20 +275,21 @@ alpha.setup({
 })
 
 -- ============================================================
--- 7. Highlight groups (Nord palette)
+-- 9. Highlight groups (Nord palette)
 -- ============================================================
 local function set_alpha_highlights()
     vim.api.nvim_set_hl(0, "AlphaHeader",   { fg = "#81A1C1", bold = true })
     vim.api.nvim_set_hl(0, "AlphaButton",   { fg = "#D8DEE9" })
     vim.api.nvim_set_hl(0, "AlphaShortcut", { fg = "#8FBCBB", bold = true })
     vim.api.nvim_set_hl(0, "AlphaFooter",   { fg = "#616E88", italic = true })
+    vim.api.nvim_set_hl(0, "AlphaFolder",   { fg = "#EBCB8B", bold = true })  -- giallo Nord
 end
 
 set_alpha_highlights()
 vim.api.nvim_create_autocmd("ColorScheme", { pattern = "*", callback = set_alpha_highlights })
 
 -- ============================================================
--- 8. Chiudi alpha con q
+-- 10. Chiudi alpha con q
 -- ============================================================
 vim.api.nvim_create_autocmd("User", {
     pattern  = "AlphaReady",

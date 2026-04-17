@@ -3,7 +3,7 @@
 -- Usa vim.lsp.config / vim.lsp.enable (API nativa nvim 0.11+)
 -- al posto di lspconfig.xxx.setup() (deprecato in nvim-lspconfig v3).
 -- Language servers: intelephense (PHP), ts_ls (TS/JS),
---                   jsonls, html, cssls
+--                   jsonls, html, cssls, lua_ls
 -- ============================================================
 
 local cmp          = require("cmp")
@@ -128,8 +128,41 @@ vim.lsp.config("cssls", {
     capabilities = capabilities,
 })
 
+-- Lua
+-- Nota: nvim-lspconfig su nvim 0.11.3+ usa root_markers annidati (array di array)
+-- che causano un crash in vim.fs.joinpath su nvim 0.12-dev. Override con lista piatta.
+vim.lsp.config("lua_ls", {
+    capabilities = capabilities,
+    root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
+    on_init = function(client)
+        -- Configura workspace solo se siamo nella config di Neovim
+        -- oppure in un progetto senza .luarc.json
+        if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+                return
+            end
+        end
+        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua or {}, {
+            runtime = { version = "LuaJIT" },
+            workspace = {
+                checkThirdParty = false,
+                library = { vim.env.VIMRUNTIME },
+            },
+            diagnostics = { globals = { "vim" } },
+            telemetry = { enable = false },
+        })
+        client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+    end,
+    settings = {
+        Lua = {
+            format = { enable = true },
+        },
+    },
+})
+
 -- Attiva tutti i server configurati sopra
-vim.lsp.enable({ "intelephense", "ts_ls", "jsonls", "html", "cssls", "phpactor" })
+vim.lsp.enable({ "intelephense", "ts_ls", "jsonls", "html", "cssls", "phpactor", "lua_ls" })
 
 -- ============================================================
 -- 4. Diagnostica globale
@@ -223,7 +256,24 @@ cmp.setup.cmdline(":", {
 })
 
 -- ============================================================
--- 6. Comandi utili
+-- 6. Format-on-save
+-- ============================================================
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group = vim.api.nvim_create_augroup("UserFormatOnSave", { clear = true }),
+    callback = function()
+        -- Formatta solo se c'è almeno un client LSP con supporto al formatting
+        local clients = vim.lsp.get_clients({ bufnr = 0 })
+        for _, client in ipairs(clients) do
+            if client:supports_method("textDocument/formatting") then
+                vim.lsp.buf.format({ async = false, timeout_ms = 3000 })
+                return
+            end
+        end
+    end,
+})
+
+-- ============================================================
+-- 7. Comandi utili
 -- ============================================================
 vim.api.nvim_create_user_command("Format", function()
     vim.lsp.buf.format({ async = true })
