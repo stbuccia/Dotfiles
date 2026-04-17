@@ -1,169 +1,135 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# ── Layout 2 righe con frame ╭─ / ╰─ ─────────────────────────────────────────
+
 add_newline = true
 
 format = """
-[╭─](bold blue)$os$username$hostname$directory$git_branch$git_status$git_state$fill$cmd_duration$python$nodejs$rust$java$lua$ruby$php$swift$kotlin$zig$time
-[╰─](bold blue)$character"""
+[╭─](fg:#585858)\
+$os\
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$cmd_duration\
+$time\n[╰─](fg:#585858)\
+$character"""
 
-[fill]
-symbol = ' '
+# ── Palette Nord ────────────────────────────────────────────────────────
+
+palette = 'nordic'
+
+[palettes.nordic]
+color_fg      = '#d8dee9'   # nord4  – testo principale
+color_blue    = '#81a1c1'   # nord9  – directory
+color_green   = '#a3be8c'   # nord14 – git branch / successo
+color_orange  = '#d08770'   # nord12 – warning
+color_purple  = '#b48ead'   # nord15 – accento
+color_red     = '#bf616a'   # nord11 – errore
+color_yellow  = '#ebcb8b'   # nord13 – git status / durata
+color_grey    = '#4c566a'   # nord3  – decorazioni frame
+
+# ── OS icon ────────────────────────────────────────────────────────────────────
 
 [os]
 disabled = false
-style = "bold blue"
+format = "[$symbol ]($style)"
+style = "fg:color_fg bold"
 
-[username]
-show_always = true
-disabled = false
-format = "[$user]($style)"
-style_user = "bold cyan"
+[os.symbols]
+Arch             = "󰣇"
+Debian           = "󰣚"
+Ubuntu           = "󰕈"
+Fedora           = "󰣛"
+Manjaro          = ""
+Mint             = "󰣭"
+Pop              = ""
+Raspbian         = "󰐿"
+Gentoo           = "󰣨"
+NixOS            = ""
+openSUSE         = ""
+SUSE             = ""
+Redhat           = "󱄛"
+RedHatEnterprise = "󱄛"
+CentOS           = ""
+Amazon           = ""
+Android          = ""
+Macos            = "󰀵"
+Windows          = "󰍲"
+Linux            = "󰌽"
+Unknown          = ""
 
-[hostname]
-ssh_only = false
-disabled = false
-format = "[@$hostname]($style) "
-style = "bold cyan"
-ssh_symbol = " "
+# ── Directory ──────────────────────────────────────────────────────────────────
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style) "
-style = "bold cyan"
+style = "fg:color_blue bold"
+read_only = " "
+read_only_style = "fg:color_red bold"
 truncation_length = 4
 truncate_to_repo = true
-read_only = " 󰌾"
+home_symbol = "~"
+
+# ── Git branch ─────────────────────────────────────────────────────────────────
 
 [git_branch]
-format = "[$symbol$branch(:$remote_branch)]($style) "
-style = "bold purple"
-symbol = " "
+format = "[$branch(:$remote_branch)]($style) "
+symbol = ""
+style = "fg:color_green bold"
+truncation_length = 30
+truncation_symbol = "…"
+
+# ── Git status ─────────────────────────────────────────────────────────────────
 
 [git_status]
-format = '([ $staged](bold green)[ $modified](bold yellow)[ $deleted](bold red)[ $untracked](bold blue)[$ahead_behind]($style) )'
-style = "bold white"
-staged = '+$count'
-modified = '~$count'
-deleted = '-$count'
-untracked = '?$count'
-ahead = '⇡$count'
-behind = '⇣$count'
-diverged = '⇡$ahead_count⇣$behind_count'
+format = '([$all_status$ahead_behind]($style) )'
+style = "fg:color_yellow bold"
+conflicted = "~$count"
+ahead      = "⇡$count"
+behind     = "⇣$count"
+diverged   = "⇡$ahead_count⇣$behind_count"
+up_to_date = ""
+untracked  = "?$count"
+stashed    = "*$count"
+modified   = "!$count"
+staged     = "+$count"
+renamed    = "»$count"
+deleted    = "✘$count"
+
+# ── Fill ───────────────────────────────────────────────────────────────────────
+
+[fill]
+symbol = " "
+style = "fg:color_fg"
+
+# ── Status exit code ───────────────────────────────────────────────────────────
+
+[status]
+disabled = false
+format = "[$symbol ]($style)"
+success_symbol = ""
+symbol         = "[✘](fg:color_red bold)"
+style          = "fg:color_red bold"
+map_symbol     = true
+
+# ── Durata comando (soglia 3s) ─────────────────────────────────────────────────
 
 [cmd_duration]
-min_time = 2_000
-format = "[ took $duration]($style) "
-style = "bold yellow"
+min_time = 3_000
+format   = "[took $duration ]($style)"
+style    = "fg:color_yellow bold"
+
+# ── Ora ────────────────────────────────────────────────────────────────────────
 
 [time]
-disabled = false
-format = "[ $time]($style)"
-style = "bold dimmed white"
+disabled    = false
+format      = "[$time ]($style)"
 time_format = "%H:%M:%S"
+style       = "fg:color_fg bold"
 
-[python]
-symbol = " "
-format = "[$symbol]($style)"
-style = "bold yellow"
-detect_files = ["requirements.txt", "pyproject.toml", "setup.py", "setup.cfg", "Pipfile", ".python-version", "poetry.lock"]
-detect_extensions = ["py"]
+# ── Carattere prompt ───────────────────────────────────────────────────────────
 
-[nodejs]
-symbol = " "
-format = "[$symbol]($style)"
-style = "bold green"
-detect_files = ["package.json", ".nvmrc", ".node-version"]
-detect_extensions = ["js", "mjs", "cjs", "ts", "tsx", "jsx"]
-
-[ocaml]
-symbol = " "
-
-[os.symbols]
-Alpaquita = " "
-Alpine = " "
-AlmaLinux = " "
-Amazon = " "
-Android = " "
-AOSC = " "
-Arch = " "
-Artix = " "
-CachyOS = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Elementary = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Ios = "󰀷 "
-Kali = " "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-Nobara = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-RockyLinux = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Void = " "
-Windows = "󰍲 "
-Zorin = " "
-
-[package]
-symbol = "󰏗 "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-format = "[$symbol]($style)"
-style = "bold purple"
-detect_files = ["composer.json"]
-detect_extensions = ["php"]
-
-[pijul_channel]
-symbol = " "
-
-[pixi]
-symbol = "󰏗 "
-
-[rlang]
-symbol = "󰟔 "
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = "󱘗 "
-
-[scala]
-symbol = " "
-
-[swift]
-symbol = " "
-
-[xmake]
-symbol = " "
-
-[zig]
-symbol = " "
+[character]
+success_symbol = "[❯](fg:color_green bold)"
+error_symbol   = "[❯](fg:color_red bold)"
+vimcmd_symbol  = "[❮](fg:color_green bold)"

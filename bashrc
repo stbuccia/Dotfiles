@@ -144,6 +144,8 @@ fi
 PATH=$PATH":$HOME/.local/bin"
 
 #wanda il pesce
+fastfetch
+echo
 fortune #| cowsay -f armadillo
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:$HOME/.local/bin:$HOME/.vimpkg/bin:$HOME/Utilities/omnetpp/bin:$HOME/Utilities/omnet/bin:/sbin:/usr/sbin:$HOME/.cargo/bin
