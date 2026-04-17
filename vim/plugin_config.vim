@@ -62,7 +62,7 @@ Plug 'prabirshrestha/vim-lsp'   " Language Server Protocol
 "Plug 'dense-analysis/ale'       " ALE 
 Plug 'github/copilot.vim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'CopilotC-Nvim/CopilotChat.nvim'
+"Plug 'CopilotC-Nvim/CopilotChat.nvim'
 Plug 'mileszs/ack.vim'
 Plug 'stevearc/aerial.nvim'
 " NeoVim only plugins
@@ -85,9 +85,9 @@ call plug#end()
 
 lua require"toggleterm".setup()
 
-lua << EOF
-require("CopilotChat").setup {
-  -- See Configuration section for options
-}
-EOF
+"lua << EOF
+"require("CopilotChat").setup {
+"  -- See Configuration section for options
+"}
+"EOF
 

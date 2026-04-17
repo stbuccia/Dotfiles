@@ -56,23 +56,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \[\033[01;34m\]\w\[\033[00m\] '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\w > \[\033[00m\]'
-else
-    PS1='${debian_chroot:+($debian_chroot)}\w '
-fi
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\w > \[\033[00m\]'
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-        ;;
-    *)
-        ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -181,7 +165,9 @@ fi
 # OPAM configuration
 . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
+export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Shell options {{{
 shopt -s autocd
@@ -217,23 +203,7 @@ export EDITOR=vim
 export SPARK_HOME=$HOME/Software/spark-3.2.1-bin-hadoop3.2-scala2.13
 export PATH=$PATH:$SPARK_HOME/bin
 
-#EMOJI
-set emoji on prompt
-
-TERMINAL_NAME=$(ps -o 'cmd=' -p $(ps -o 'ppid=' -p $$))
-if [ "$TERMINAL_NAME" = "kitty" ]; then
-    if [ "$EUID" -ne 0 ]; then
-        PS1="\`if [[ \$? = '0' ]]; then echo '⚓ '; else echo '☠️ '; fi\`"$PS1
-    else
-        PS1="\`if [[ \$? = '0' ]]; then echo '🔱 '; else echo '🌊'; fi\`"$PS1
-    fi
-else
-    if [ "$EUID" -ne 0 ]; then
-        PS1="\`if [[ \$? = '0' ]]; then echo '⚓ '; else echo '☠️  '; fi\`"$PS1
-    else
-        PS1="\`if [[ \$? = '0' ]]; then echo '🔱 '; else echo '🌊 '; fi\`"$PS1
-    fi
-fi
+#EMOJI - gestite da Starship (⚓ ok / ☠️ errore)
 
 [ -f $HOME/.emoji-alias.bash ] && source $HOME/.emoji-alias.bash
 
@@ -257,3 +227,80 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
+
+# ── Modern CLI replacements ────────────────────────────────────────────────────
+
+# bat → cat (syntax highlighting, git integration)
+if command -v bat &>/dev/null; then
+    alias cat='bat --paging=never'
+    alias catp='bat'                        # cat with paging
+    alias batman='bat --plain --paging=never' # raw output, no decorations
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export BAT_THEME="TwoDark"
+fi
+
+# eza → ls (icons, git status, tree view)
+if command -v eza &>/dev/null; then
+    export EZA_COLORS="di=34:fi=0:ex=32:ln=36:uu=33:gu=33:ur=33:uw=31:ux=32:gr=33:gw=31:gx=32:tr=33:tw=31:tx=32:sn=32:sb=32:da=34"
+    alias ls='eza --icons --group-directories-first'
+    alias ll='eza --icons --group-directories-first -l --git'
+    alias la='eza --icons --group-directories-first -la --git'
+    alias l='eza --icons --group-directories-first -1'
+    alias lt='eza --icons --tree --level=2'
+    alias llt='eza --icons --tree --level=3 -l --git'
+fi
+
+# zoxide → cd (frecency-based smart jump)
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init bash)"
+    alias cd='z'
+fi
+
+# ripgrep → grep (already installed, ensure alias)
+if command -v rg &>/dev/null; then
+    alias grep='rg'
+fi
+
+# fd → find (already installed, ensure alias)
+if command -v fd &>/dev/null; then
+    alias find='fd'
+fi
+
+# dust → du (visual disk usage)
+if command -v dust &>/dev/null; then
+    alias du='dust'
+fi
+
+# duf → df (disk usage/free, pretty output)
+if command -v duf &>/dev/null; then
+    alias df='duf'
+fi
+
+# procs → ps (modern process viewer)
+if command -v procs &>/dev/null; then
+    alias ps='procs'
+fi
+
+# bottom → top/htop (resource monitor with TUI)
+if command -v btm &>/dev/null; then
+    alias top='btm'
+    alias htop='btm'
+fi
+
+# tealdeer → tldr (fast tldr client)
+if command -v tldr &>/dev/null; then
+    alias help='tldr'
+fi
+
+# git-delta as git pager (rich diffs)
+if command -v delta &>/dev/null; then
+    export GIT_PAGER='delta'
+fi
+
+# ── End modern CLI replacements ───────────────────────────────────────────────
+
+# SSH agent (systemd socket)
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+# Starship prompt
+eval "$(starship init bash)"
