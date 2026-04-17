@@ -1,0 +1,32 @@
+{
+    "settings": {
+        "engine": {
+            "label": "Moteur de recherche",
+            "description": "Moteur de recherche par défaut à ouvrir lors de la recherche sur le Web"
+        },
+        "directUrl": {
+            "label": "Ouverture directe d'URL",
+            "description": "Ouvrir les URL directement dans le navigateur au lieu de les rechercher"
+        },
+        "suggestions": {
+            "label": "Afficher les suggestions de recherche",
+            "description": "Récupérer des suggestions en temps réel pendant la saisie"
+        },
+        "maxResults": {
+            "label": "Maximum de résultats",
+            "description": "Limiter le nombre de suggestions affichées"
+        }
+    },
+    "launcher": {
+        "typeSomething": "Tapez quelque chose...",
+        "searchInternet": "Rechercher sur Internet depuis {engine}",
+        "search": "Rechercher \"{query}\"",
+        "openIn": "Ouvrir dans {engine}",
+        "openUrl": "Ouvrir {url}",
+        "openUrlDescription": "Ouvrir l'URL directement dans le navigateur",
+        "suggestion": "Suggestion de {engine}",
+        "command": {
+            "description": "Rechercher quelque chose sur Internet"
+        }
+    }
+}

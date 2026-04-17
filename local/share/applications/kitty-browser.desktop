@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Kitty Browser
+Comment=Open URLs in kitty terminal
+Exec=/home/stefano/.local/bin/kitty-browser.sh %u
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;

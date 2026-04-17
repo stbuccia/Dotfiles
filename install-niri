@@ -1,0 +1,77 @@
+#!/bin/bash
+# Installa niri + noctalia su Ubuntu 25.10 (Questing Quokka)
+# e registra niri come sessione selezionabile dal GDM
+
+set -e
+
+echo "==> Aggiunta PPA niri (avengemedia/danklinux)..."
+sudo add-apt-repository -y ppa:avengemedia/danklinux
+
+echo "==> Aggiunta repository noctalia (questing/Ubuntu 25.10)..."
+curl -fsSL https://pkg.noctalia.dev/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/noctalia.gpg
+echo "deb [signed-by=/etc/apt/keyrings/noctalia.gpg] https://pkg.noctalia.dev/apt questing main" \
+    | sudo tee /etc/apt/sources.list.d/noctalia.list
+
+echo "==> Aggiornamento lista pacchetti..."
+sudo apt update
+
+echo "==> Installazione niri..."
+sudo apt install -y niri
+
+echo "==> Installazione noctalia-shell (include noctalia-qs/quickshell)..."
+sudo apt install -y noctalia-shell
+
+echo "==> Installazione dipendenze usate dalla config niri..."
+sudo apt install -y \
+    swaybg \
+    xwayland-satellite \
+    brightnessctl \
+    playerctl \
+    wireplumber \
+    pipewire \
+    dolphin \
+    imagemagick \
+    python3 \
+    git \
+    wlsunset \
+    xdg-desktop-portal-gnome
+
+# hyprpolkitagent: prova prima da apt, poi segnala se mancante
+if apt-cache show hyprpolkitagent &>/dev/null; then
+    sudo apt install -y hyprpolkitagent
+else
+    echo "ATTENZIONE: hyprpolkitagent non trovato nei repo apt."
+    echo "  Puoi installarlo da flatpak o compilarlo: https://github.com/hyprwm/hyprpolkitagent"
+    echo "  In alternativa usa gnome-polkit: sudo apt install polkit-gnome"
+    echo "  e modifica config/niri/config.kdl sostituendo hyprpolkitagent con:"
+    echo "    spawn-at-startup \"/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1\""
+fi
+
+echo "==> Verifica file sessione niri per GDM..."
+if [ -f /usr/share/wayland-sessions/niri.desktop ]; then
+    echo "  OK: /usr/share/wayland-sessions/niri.desktop già presente."
+elif [ -f /usr/local/share/wayland-sessions/niri.desktop ]; then
+    echo "  OK: /usr/local/share/wayland-sessions/niri.desktop già presente."
+else
+    echo "  File sessione non trovato, lo creo manualmente..."
+    sudo mkdir -p /usr/share/wayland-sessions
+    sudo tee /usr/share/wayland-sessions/niri.desktop > /dev/null <<'EOF'
+[Desktop Entry]
+Name=Niri
+Comment=A scrollable-tiling Wayland compositor
+Exec=niri-session
+Type=Application
+DesktopNames=niri
+EOF
+    echo "  Creato /usr/share/wayland-sessions/niri.desktop"
+fi
+
+echo ""
+echo "==> Installazione completata!"
+echo ""
+echo "Passi successivi:"
+echo "  1. Esegui lo script ./install per creare i symlink delle config"
+echo "  2. Fai logout"
+echo "  3. Nel GDM, clicca sull'icona a ingranaggio accanto al tuo nome"
+echo "  4. Seleziona 'Niri' per accedere con niri+noctalia"
+echo "     oppure 'Ubuntu' / 'Ubuntu su Wayland' per GNOME"

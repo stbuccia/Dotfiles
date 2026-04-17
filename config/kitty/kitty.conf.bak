@@ -1,0 +1,31 @@
+# ~/.config/kitty/kitty.conf
+
+# FONT
+font_size           12.0
+adjust_line_height  2
+font_family         FiraMonoNerdFontMono-Regular
+modify_font         bold_font_weight 450
+#bold_font           auto
+#italic_font         auto
+#bold_italic_font    auto
+
+# SCOLLBAR
+scrollback_lines 200000
+
+ #WINDOW LAYOUT
+remember_window_size   yes
+window_padding_width   12
+
+# THEME
+include ./nord.conf
+# include ./catppuccin.conf
+
+linux_display_server wayland
+
+# WAYLAND / GNOME INTEGRATION
+# Usa le decorazioni del compositor (GNOME/Mutter) invece di quelle di Kitty
+# In questo modo la titlebar avrà lo stesso stile GTK del tema Yaru-red
+wayland_titlebar_color #ebebeb
+
+# KEYBOARD SHORTCUT
+

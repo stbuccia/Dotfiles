@@ -1,0 +1,208 @@
+{
+  "widget": {
+    "tooltip": {
+      "checking": "Проверка linux-wallpaperengine",
+      "unavailable": "linux-wallpaperengine не установлен",
+      "running": "Движок обоев применяет настройки",
+      "ready": "Открыть панель движка обоев"
+    }
+  },
+  "menu": {
+    "reload": "Перезагрузить движок обоев",
+    "start": "Запустить движок обоев",
+    "stop": "Остановить движок обоев",
+    "settings": "Настройки плагина"
+  },
+  "toast": {
+    "reloaded": "Движок обоев перезагружен",
+    "stopped": "Движок обоев остановлен",
+    "reloadSkippedNoWallpaper": "Обои не настроены, поэтому перезагружать нечего"
+  },
+  "main": {
+    "status": {
+      "unavailable": "Движок недоступен",
+      "ready": "Готово",
+      "starting": "Запуск движка",
+      "stopped": "Остановлено",
+      "crashed": "Движок неожиданно завершился"
+    },
+    "error": {
+      "notInstalled": "linux-wallpaperengine не найден в PATH. Проверьте, установлен ли он правильно.",
+      "assetsMissing": "Ресурсы Wallpaper Engine не найдены. Укажите каталог ресурсов в настройках.",
+      "noBackground": "Путь к обоям не настроен.",
+      "opengl": "Не удалось инициализировать OpenGL. Проверьте драйвер и совместимость композитора.",
+      "autoRecovered": "Автоматически восстановлена последняя рабочая раскладка"
+    }
+  },
+  "panel": {
+    "title": "Wallpaper-Engine Выбор обоев",
+    "statusChecking": "Проверка",
+    "statusUnavailable": "Недоступно",
+    "statusRunning": "Работает",
+    "statusReady": "Настроено",
+    "statusStopped": "Остановлено",
+    "sectionAudio": "Отображение и аудио",
+    "sectionFeatures": "Функции",
+    "installHint": "Пример установки: yay -S linux-wallpaperengine-git",
+    "errorBannerTitle": "Обнаружена ошибка выполнения",
+    "errorShowDetails": "Показать подробности",
+    "errorHideDetails": "Скрыть подробности",
+    "errorDismiss": "Закрыть",
+    "reload": "Перезагрузить",
+    "start": "Запустить",
+    "stop": "Остановить",
+    "confirm": "Подтвердить",
+    "cancel": "Отмена",
+    "compatibilityQuickCheck": "Быстрая проверка совместимости",
+    "compatibilityQuickCheckRunning": "Проверка совместимости обоев...",
+    "compatibilityQuickCheckConfirm": "Просканировать все обои на совместимость дополнительных свойств? Это может занять некоторое время.",
+    "compatibilityQuickCheckFinished": "Проверено обоев: {total}, могут работать некорректно: {failed}",
+    "folderInvalid": "Каталог источника обоев недействителен или недоступен.",
+    "scanning": "Сканирование обоев...",
+    "searchPlaceholder": "Поиск обоев по названию или ID",
+    "searchClear": "Очистить поиск",
+    "filterButtonSummary": "Фильтр · {type}",
+    "sortButtonSummary": "Сортировка · {direction} {sort}",
+    "applyAllDisplays": "Применить ко всем дисплеям",
+    "closePanel": "Закрыть панель",
+    "confirmApply": "Применить обои",
+    "wallpaperScaling": "Масштабирование",
+    "wallpaperClamp": "Режим зажатия",
+    "wallpaperVolume": "Громкость",
+    "wallpaperMuted": "Без звука",
+    "wallpaperAudioReactive": "Эффекты аудиореакции",
+    "wallpaperDisableMouse": "Отключить взаимодействие мышью",
+    "wallpaperDisableParallax": "Отключить эффект параллакса",
+    "sectionProperties": "Дополнительные свойства",
+    "loadingProperties": "Загрузка свойств обоев...",
+    "propertiesLoadFailed": "Не удалось загрузить свойства обоев. Возможно, формат свойств этих обоев пока не поддерживается, либо сами обои не могут быть корректно загружены и запущены",
+    "propertiesFailedBadge": "Может не работать",
+    "noEditableProperties": "У этих обоев пока нет поддерживаемых редактируемых дополнительных свойств",
+    "propertiesNotice": "Здесь показаны только свойства, которые этот плагин умеет редактировать напрямую",
+    "infoType": "Тип",
+    "infoId": "ID",
+    "infoResolution": "Разрешение",
+    "infoSize": "Размер",
+    "scalingFill": "Заполнение",
+    "scalingFit": "По размеру",
+    "scalingStretch": "Растянуть",
+    "scalingDefault": "По умолчанию",
+    "clampClamp": "Зажатие",
+    "clampBorder": "Граница",
+    "clampRepeat": "Повтор",
+    "propertyLabelThemeColor": "Цвет темы",
+    "targetAllDisplays": "Цель: все дисплеи",
+    "targetSingleDisplay": "Цель: {screen}",
+    "applySingleDisplay": "Применить к {screen}",
+    "filterAll": "Все",
+    "filterTypeAll": "Все",
+    "filterTypeScene": "Сцена",
+    "filterTypeVideo": "Видео",
+    "filterTypeWeb": "Веб",
+    "filterTypeApplication": "Приложение",
+    "filterResAll": "Разрешение: все",
+    "filterRes4k": "Разрешение: 4K",
+    "filterRes8k": "Разрешение: 8K",
+    "filterResUnknown": "Разрешение: неизвестно",
+    "filterStatic": "Статические",
+    "filterDynamic": "Динамические",
+    "sortName": "Имя",
+    "sortDateAdded": "Дата добавления",
+    "sortSize": "Размер",
+    "sortRecent": "Недавние",
+    "sortAscendingToggle": "Переключить возр./убыв.",
+    "sortAscendingToggleWithDirection": "{direction} переключить возр./убыв.",
+    "sortId": "ID",
+    "typeScene": "Сцена",
+    "typeVideo": "Видео",
+    "typeWeb": "Веб",
+    "typeApplication": "Приложение",
+    "resolutionUnknown": "Неизвестно",
+    "dynamicBadge": "Динамические",
+    "staticBadge": "Статические",
+    "prevPage": "Назад",
+    "nextPage": "Вперёд",
+    "pageSummary": "Страница {current} / {total}",
+    "pageRange": "{start}-{end} / {total}",
+    "count": "Количество обоев: {count}",
+    "emptyAll": "В исходном каталоге не найдено ни одних обоев",
+    "emptyFiltered": "Не найдено обоев, соответствующих текущим фильтрам"
+  },
+  "settings": {
+    "category": {
+      "interfaceTitle": "Интерфейс",
+      "performanceTitle": "Производительность",
+      "compatibilityTitle": "Ресурсы",
+      "audioTitle": "Аудио",
+      "displayTitle": "Отображение"
+    },
+    "iconColor": {
+      "label": "Цвет значка",
+      "description": "Цвет значка виджета на панели"
+    },
+    "enableExtraPropertiesEditor": {
+      "label": "Включить редактор дополнительных свойств",
+      "description": "Показывать в боковой панели дополнительные свойства конкретных обоев, если они доступны"
+    },
+    "units": {
+      "fps": " FPS",
+      "percent": " %"
+    },
+    "wallpapersFolder": {
+      "label": "Каталог источника обоев",
+      "description": "Каталог, содержащий папки проектов обоев",
+      "placeholder": "~/.local/share/Steam/steamapps/workshop/content/431960",
+      "scan": "Автоматически определить каталог мастерской Steam"
+    },
+    "assetsDir": {
+      "label": "Каталог ресурсов Wallpaper Engine",
+      "description": "Необязательно: путь к assets, используемый linux-wallpaperengine",
+      "placeholder": "~/.local/share/wallpaperengine/assets"
+    },
+    "defaultScaling": {
+      "label": "Режим масштабирования по умолчанию",
+      "description": "Режим масштабирования по умолчанию, если пользовательское значение не задано"
+    },
+    "defaultClamp": {
+      "label": "Режим зажатия по умолчанию",
+      "description": "Способ обработки границ, используемый по умолчанию при рендеринге обоев"
+    },
+    "defaultFps": {
+      "label": "FPS по умолчанию",
+      "description": "Ограничение частоты кадров для обоев по умолчанию",
+      "placeholder": "30"
+    },
+    "defaultNoFullscreenPause": {
+      "label": "Не приостанавливать в полноэкранном режиме",
+      "description": "Не приостанавливать обои во время работы полноэкранных приложений"
+    },
+    "defaultFullscreenPauseOnlyActive": {
+      "label": "Приостанавливать только для активного полноэкранного окна",
+      "description": "(Только Wayland) Приостанавливать только когда активно полноэкранное окно"
+    },
+    "defaultVolume": {
+      "label": "Громкость обоев по умолчанию"
+    },
+    "defaultMuted": {
+      "label": "Отключать звук обоев по умолчанию",
+      "description": "Запускать обои в беззвучном режиме по умолчанию"
+    },
+    "defaultAudioReactiveEffects": {
+      "label": "Эффекты аудиореакции"
+    },
+    "defaultNoAutomute": {
+      "label": "Не заглушать при воспроизведении звука другими приложениями",
+      "description": "Если включено, звук обоев продолжит воспроизводиться даже когда другие приложения выводят аудио"
+    },
+    "defaultDisableMouse": {
+      "label": "Отключить взаимодействие мышью"
+    },
+    "defaultDisableParallax": {
+      "label": "Отключить эффект параллакса"
+    },
+    "autoApplyOnStartup": {
+      "label": "Автоприменение при запуске",
+      "description": "Если хотя бы для одного экрана настроены обои, автоматически запускать движок при старте"
+    }
+  }
+}

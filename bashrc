@@ -232,15 +232,6 @@ export PATH=$HOME/.opencode/bin:$PATH
 
 # ── Modern CLI replacements ────────────────────────────────────────────────────
 
-
-
-# zoxide → cd (frecency-based smart jump)
-if command -v zoxide &>/dev/null; then
-    eval "$(zoxide init bash)"
-    alias cd='z'
-fi
-
-
 # fd → find (already installed, ensure alias)
 if command -v fd &>/dev/null; then
     alias find='fd'
@@ -284,3 +275,9 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Starship prompt
 eval "$(starship init bash)"
+
+# zoxide → cd (frecency-based smart jump) — must be last
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init bash)"
+    alias cd='z'
+fi

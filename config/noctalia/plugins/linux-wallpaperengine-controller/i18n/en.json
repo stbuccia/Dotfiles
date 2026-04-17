@@ -1,0 +1,208 @@
+{
+  "widget": {
+    "tooltip": {
+      "checking": "Checking linux-wallpaperengine",
+      "unavailable": "linux-wallpaperengine is not installed",
+      "running": "Wallpaper engine is applying settings",
+      "ready": "Open wallpaper engine panel"
+    }
+  },
+  "menu": {
+    "reload": "Reload wallpaper engine",
+    "start": "Start wallpaper engine",
+    "stop": "Stop wallpaper engine",
+    "settings": "Plugin settings"
+  },
+  "toast": {
+    "reloaded": "Wallpaper engine reloaded",
+    "stopped": "Wallpaper engine stopped",
+    "reloadSkippedNoWallpaper": "No wallpaper is configured, so there was nothing to reload"
+  },
+  "main": {
+    "status": {
+      "unavailable": "Engine unavailable",
+      "ready": "Ready",
+      "starting": "Starting engine",
+      "stopped": "Stopped",
+      "crashed": "Engine exited unexpectedly"
+    },
+    "error": {
+      "notInstalled": "linux-wallpaperengine was not found in PATH. Please check whether it is installed correctly.",
+      "assetsMissing": "Wallpaper Engine assets were not found. Configure the assets directory in settings.",
+      "noBackground": "No wallpaper path is configured.",
+      "opengl": "OpenGL initialization failed. Check driver and compositor compatibility.",
+      "autoRecovered": "Auto recovered to the last available layout"
+    }
+  },
+  "panel": {
+    "title": "Wallpaper-Engine Wallpaper Selector",
+    "statusChecking": "Checking",
+    "statusUnavailable": "Unavailable",
+    "statusRunning": "Running",
+    "statusReady": "Configured",
+    "statusStopped": "Stopped",
+    "sectionAudio": "Display & Audio",
+    "sectionFeatures": "Features",
+    "installHint": "Install example: yay -S linux-wallpaperengine-git",
+    "errorBannerTitle": "Runtime error detected",
+    "errorShowDetails": "View details",
+    "errorHideDetails": "Hide details",
+    "errorDismiss": "Dismiss",
+    "reload": "Reload",
+    "start": "Start",
+    "stop": "Stop",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "compatibilityQuickCheck": "Compatibility quick check",
+    "compatibilityQuickCheckRunning": "Checking wallpaper compatibility...",
+    "compatibilityQuickCheckConfirm": "Scan all wallpapers for extra property compatibility? This may take some time.",
+    "compatibilityQuickCheckFinished": "Scanned {total} wallpapers, {failed} may fail",
+    "folderInvalid": "Wallpaper source directory is invalid or inaccessible.",
+    "scanning": "Scanning wallpapers...",
+    "searchPlaceholder": "Search wallpapers by name or ID",
+    "searchClear": "Clear search",
+    "filterButtonSummary": "Filter · {type}",
+    "sortButtonSummary": "Sort · {direction} {sort}",
+    "applyAllDisplays": "Apply to all displays",
+    "closePanel": "Close panel",
+    "confirmApply": "Apply wallpaper",
+    "wallpaperScaling": "Scaling",
+    "wallpaperClamp": "Clamp mode",
+    "wallpaperVolume": "Volume",
+    "wallpaperMuted": "Mute",
+    "wallpaperAudioReactive": "Audio reactive effects",
+    "wallpaperDisableMouse": "Disable mouse interaction",
+    "wallpaperDisableParallax": "Disable parallax effect",
+    "sectionProperties": "Extra properties",
+    "loadingProperties": "Loading wallpaper properties...",
+    "propertiesLoadFailed": "Failed to load wallpaper properties. This wallpaper format may not be supported yet, or this wallpaper may not run correctly",
+    "propertiesFailedBadge": "May fail",
+    "noEditableProperties": "This wallpaper has no editable extra properties yet",
+    "propertiesNotice": "Only directly editable properties supported by this plugin are shown here",
+    "infoType": "Type",
+    "infoId": "ID",
+    "infoResolution": "Resolution",
+    "infoSize": "Size",
+    "scalingFill": "Fill",
+    "scalingFit": "Fit",
+    "scalingStretch": "Stretch",
+    "scalingDefault": "Default",
+    "clampClamp": "Clamp",
+    "clampBorder": "Border",
+    "clampRepeat": "Repeat",
+    "propertyLabelThemeColor": "Theme Color",
+    "targetAllDisplays": "Target: All displays",
+    "targetSingleDisplay": "Target: {screen}",
+    "applySingleDisplay": "Apply to {screen}",
+    "filterAll": "All",
+    "filterTypeAll": "All",
+    "filterTypeScene": "Scene",
+    "filterTypeVideo": "Video",
+    "filterTypeWeb": "Web",
+    "filterTypeApplication": "Application",
+    "filterResAll": "Resolution: All",
+    "filterRes4k": "Resolution: 4K",
+    "filterRes8k": "Resolution: 8K",
+    "filterResUnknown": "Resolution: Unknown",
+    "filterStatic": "Static",
+    "filterDynamic": "Dynamic",
+    "sortName": "Name",
+    "sortDateAdded": "Added time",
+    "sortSize": "Size",
+    "sortRecent": "Recent",
+    "sortAscendingToggle": "Toggle Asc/Desc",
+    "sortAscendingToggleWithDirection": "{direction} Toggle Asc/Desc",
+    "sortId": "ID",
+    "typeScene": "Scene",
+    "typeVideo": "Video",
+    "typeWeb": "Web",
+    "typeApplication": "Application",
+    "resolutionUnknown": "Unknown",
+    "dynamicBadge": "Dynamic",
+    "staticBadge": "Static",
+    "prevPage": "Previous",
+    "nextPage": "Next",
+    "pageSummary": "Page {current} / {total}",
+    "pageRange": "{start}-{end} / {total}",
+    "count": "Wallpaper count: {count}",
+    "emptyAll": "No wallpapers found in the source directory",
+    "emptyFiltered": "No wallpapers match the current filters"
+  },
+  "settings": {
+    "category": {
+      "interfaceTitle": "Interface",
+      "performanceTitle": "Performance",
+      "compatibilityTitle": "Resources",
+      "audioTitle": "Audio",
+      "displayTitle": "Display"
+    },
+    "iconColor": {
+      "label": "Icon color",
+      "description": "Color used for the bar widget icon"
+    },
+    "enableExtraPropertiesEditor": {
+      "label": "Enable extra property editor",
+      "description": "Show wallpaper-specific extra properties in the panel sidebar when available"
+    },
+    "units": {
+      "fps": " FPS",
+      "percent": " %"
+    },
+    "wallpapersFolder": {
+      "label": "Wallpaper source directory",
+      "description": "Directory containing wallpaper project folders",
+      "placeholder": "~/.local/share/Steam/steamapps/workshop/content/431960",
+      "scan": "Auto-detect Steam workshop directory"
+    },
+    "assetsDir": {
+      "label": "Wallpaper Engine assets directory",
+      "description": "Optional: assets path used by linux-wallpaperengine",
+      "placeholder": "~/.local/share/wallpaperengine/assets"
+    },
+    "defaultScaling": {
+      "label": "Default scaling mode",
+      "description": "Default scaling mode when no custom value is set"
+    },
+    "defaultClamp": {
+      "label": "Default clamp mode",
+      "description": "Default edge handling mode used when rendering wallpapers"
+    },
+    "defaultFps": {
+      "label": "Default FPS",
+      "description": "Default frame rate limit for wallpapers",
+      "placeholder": "30"
+    },
+    "defaultNoFullscreenPause": {
+      "label": "Prevent fullscreen pause",
+      "description": "Prevent pausing while fullscreen apps are running"
+    },
+    "defaultFullscreenPauseOnlyActive": {
+      "label": "Pause only active fullscreen",
+      "description": "(Wayland only) Pause only when a fullscreen window is active"
+    },
+    "defaultVolume": {
+      "label": "Default wallpaper volume"
+    },
+    "defaultMuted": {
+      "label": "Mute wallpaper by default",
+      "description": "Start wallpapers in mute mode by default"
+    },
+    "defaultAudioReactiveEffects": {
+      "label": "Audio reactive effects"
+    },
+    "defaultNoAutomute": {
+      "label": "Do not mute when other apps play audio",
+      "description": "When enabled, wallpaper audio keeps playing even while other applications are outputting sound"
+    },
+    "defaultDisableMouse": {
+      "label": "Disable mouse interaction"
+    },
+    "defaultDisableParallax": {
+      "label": "Disable parallax effect"
+    },
+    "autoApplyOnStartup": {
+      "label": "Auto apply on startup",
+      "description": "If at least one screen has a configured wallpaper, run the engine automatically on startup"
+    }
+  }
+}

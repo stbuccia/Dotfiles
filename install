@@ -94,8 +94,21 @@ fi
 #fi
 
 echo "Open vim and digit ':PlugInstall'"
+# symlink local bin and applications
+mkdir -p ~/.local/bin ~/.local/share/applications
+ln -sf ~/Dotfiles/local/bin/kitty-browser.sh ~/.local/bin/kitty-browser.sh
+chmod +x ~/.local/bin/kitty-browser.sh
+ln -sf ~/Dotfiles/local/share/applications/kitty-browser.desktop ~/.local/share/applications/kitty-browser.desktop
+
 #mette vim come editor predefinito
 xdg-mime default vim.desktop text/*
+
+# mette kitty come browser predefinito
+xdg-settings set default-web-browser kitty-browser.desktop
+xdg-mime default kitty-browser.desktop x-scheme-handler/http x-scheme-handler/https
 source $HOME/.bashrc
+
+echo ""
+echo "NOTA: per installare niri e noctalia esegui: ./install-niri"
 
 

@@ -236,6 +236,16 @@ window-rule {
         color "#1a1a1aee"
     }
 }
+//
+//// SQL Developer (Java/Swing – force floating to avoid blank window)
+//window-rule {
+//    match app-id=r#"sqldeveloper"#
+//    open-floating true
+//}
+//window-rule {
+//    match title=r#".*SQL Developer.*"#
+//    open-floating true
+//}
 
 // ──────────────────────────────────────────────────────────────
 // LID SWITCH
@@ -378,6 +388,9 @@ binds {
 
     // ── Multi-monitor focus ───────────────────────────────────
 
+    Super+Ctrl+H { focus-monitor-left; }
+    Super+Ctrl+L { focus-monitor-right; }
+
     Super+Ctrl+Shift+H { move-column-to-monitor-left; }
     Super+Ctrl+Shift+L { move-column-to-monitor-right; }
 
@@ -416,3 +429,6 @@ binds {
 }
 // Nota: Super+MouseLeft/Right per move/resize sono gesti nativi in niri,
 // non richiedono binding esplicito.
+
+include "./noctalia.kdl"
+

@@ -94,6 +94,7 @@
             "left": [
                 {
                     "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
                     "icon": "rocket",
@@ -222,11 +223,41 @@
                 {
                     "colorizeDistroLogo": false,
                     "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
                     "icon": "noctalia",
                     "id": "ControlCenter",
                     "useDistroLogo": false
+                },
+                {
+                    "defaultSettings": {
+                        "assetsDir": "",
+                        "autoApplyOnStartup": true,
+                        "defaultAudioReactiveEffects": true,
+                        "defaultClamp": "clamp",
+                        "defaultDisableMouse": false,
+                        "defaultDisableParallax": false,
+                        "defaultFps": 30,
+                        "defaultFullscreenPauseOnlyActive": false,
+                        "defaultMuted": true,
+                        "defaultNoAutomute": false,
+                        "defaultNoFullscreenPause": false,
+                        "defaultScaling": "fill",
+                        "defaultVolume": 100,
+                        "enableExtraPropertiesEditor": true,
+                        "iconColor": "none",
+                        "lastKnownGoodScreens": {
+                        },
+                        "panelLastSelectedPath": "",
+                        "runtimeRecoveryPending": false,
+                        "screens": {
+                        },
+                        "wallpaperProperties": {
+                        },
+                        "wallpapersFolder": "~/.local/share/Steam/steamapps/workshop/content/431960"
+                    },
+                    "id": "plugin:linux-wallpaperengine-controller"
                 }
             ]
         }
@@ -255,12 +286,12 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": true,
+        "darkMode": false,
         "generationMethod": "tonal-spot",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Noctalia (default)",
+        "predefinedScheme": "Nord",
         "schedulingMode": "off",
         "syncGsettings": true,
         "useWallpaperColors": true
@@ -376,7 +407,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/stefano/Immagini/avatar_3.png",
+        "avatarImage": "/home/stefano/Immagini/JPG/Personale/Lofi Girl/avatar_3.png",
         "boxRadiusRatio": 1,
         "clockFormat": "HH:mm ddd, dd MMM",
         "clockStyle": "custom",
@@ -437,8 +468,8 @@
     },
     "hooks": {
         "colorGeneration": "",
-        "darkModeChange": "",
-        "enabled": false,
+        "darkModeChange": "~/.config/noctalia/scripts/dark-mode-change.sh",
+        "enabled": true,
         "performanceModeDisabled": "",
         "performanceModeEnabled": "",
         "screenLock": "",
@@ -643,6 +674,14 @@
     },
     "templates": {
         "activeTemplates": [
+            {
+                "enabled": true,
+                "id": "gtk"
+            },
+            {
+                "enabled": true,
+                "id": "niri"
+            }
         ],
         "enableUserTheming": false
     },
