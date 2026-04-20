@@ -63,7 +63,7 @@ input {
 
     touchpad {
         tap
-        // natural-scroll  // omesso = scroll normale (non invertito)
+        natural-scroll  // omesso = scroll normale (non invertito)
         accel-speed 0.0
         accel-profile "flat"
     }
@@ -214,10 +214,10 @@ window-rule {
 }
 
 // Convert fullscreen requests to maximized
-window-rule {
-    open-fullscreen false
-    open-maximized true
-}
+//window-rule {
+//    open-fullscreen false
+//    open-maximized true
+//}
 
 // Telegram → workspace 4
 window-rule {

@@ -407,7 +407,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/stefano/Immagini/JPG/Personale/Lofi Girl/avatar_3.png",
+        "avatarImage": "/home/stefano/Dotfiles/avatar.png",
         "boxRadiusRatio": 1,
         "clockFormat": "HH:mm ddd, dd MMM",
         "clockStyle": "custom",
@@ -681,6 +681,30 @@
             {
                 "enabled": true,
                 "id": "niri"
+            },
+            {
+                "enabled": true,
+                "id": "yazi"
+            },
+            {
+                "enabled": true,
+                "id": "btop"
+            },
+            {
+                "enabled": true,
+                "id": "telegram"
+            },
+            {
+                "enabled": true,
+                "id": "kcolorscheme"
+            },
+            {
+                "enabled": true,
+                "id": "hyprtoolkit"
+            },
+            {
+                "enabled": true,
+                "id": "qt"
             }
         ],
         "enableUserTheming": false

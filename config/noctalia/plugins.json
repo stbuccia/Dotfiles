@@ -7,14 +7,6 @@
         }
     ],
     "states": {
-        "linux-wallpaperengine-controller": {
-            "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
-        "web-search": {
-            "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
-        }
     },
     "version": 2
 }
