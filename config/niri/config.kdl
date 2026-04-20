@@ -6,15 +6,27 @@
 // OUTPUTS / MONITORS
 // ──────────────────────────────────────────────────────────────
 
-output "eDP-1" {
+output "DP-3" {
     mode "1920x1080@60.000"
     position x=0 y=0
     scale 1.0
 }
 
-output "HDMI-A-1" {
+output "DP-4" {
     mode "1920x1080@60.000"
     position x=1920 y=0
+    scale 1.0
+}
+
+output "eDP-1" {
+    mode "1920x1080@60.000"
+    position x=3840 y=0
+    scale 1.0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@60.000"
+    position x=5760 y=0
     scale 1.0
 }
 
@@ -81,12 +93,12 @@ input {
 // WORKSPACES
 // ──────────────────────────────────────────────────────────────
 
-workspace "1"
-workspace "2"
-workspace "3"
-workspace "4"
-workspace "5"
-workspace "6"
+workspace "Home"  { open-on-output "DP-4"; }
+workspace "Data"  { open-on-output "DP-4"; }
+workspace "Mail"  { open-on-output "DP-4"; }
+workspace "Chat"  { open-on-output "DP-4"; }
+workspace "Svago" { open-on-output "DP-4"; }
+workspace "Audio" { open-on-output "DP-4"; }
 
 // ──────────────────────────────────────────────────────────────
 // LAYOUT
@@ -219,10 +231,36 @@ window-rule {
 //    open-maximized true
 //}
 
-// Telegram → workspace 4
+// Telegram → workspace Chat
 window-rule {
     match app-id="org.telegram.desktop"
-    open-on-workspace "4"
+    open-on-workspace "Chat"
+}
+
+// Teams → workspace Mail
+window-rule {
+    match app-id=r#".*teams.*"#
+    open-on-workspace "Mail"
+}
+window-rule {
+    match title=r#".*Microsoft Teams.*"#
+    open-on-workspace "Mail"
+}
+
+// Thunderbird → workspace Mail
+window-rule {
+    match app-id="thunderbird"
+    open-on-workspace "Mail"
+}
+
+// SQL Developer → workspace Data
+window-rule {
+    match app-id=r#".*sqldeveloper.*"#
+    open-on-workspace "Data"
+}
+window-rule {
+    match title=r#".*SQL Developer.*"#
+    open-on-workspace "Data"
 }
 
 // Float dialog-like windows
@@ -236,16 +274,6 @@ window-rule {
         color "#1a1a1aee"
     }
 }
-//
-//// SQL Developer (Java/Swing – force floating to avoid blank window)
-//window-rule {
-//    match app-id=r#"sqldeveloper"#
-//    open-floating true
-//}
-//window-rule {
-//    match title=r#".*SQL Developer.*"#
-//    open-floating true
-//}
 
 // ──────────────────────────────────────────────────────────────
 // LID SWITCH

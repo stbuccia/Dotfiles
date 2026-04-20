@@ -273,6 +273,9 @@ fi
 # SSH agent (systemd socket)
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+# Java font rendering (fixes blurry fonts in Swing apps like SQL Developer)
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
 # Starship prompt
 eval "$(starship init bash)"
 
@@ -281,3 +284,4 @@ if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
     alias cd='z'
 fi
+. "$HOME/.cargo/env"

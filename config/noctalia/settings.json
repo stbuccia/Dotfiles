@@ -146,17 +146,6 @@
                     "usePadding": false
                 },
                 {
-                    "colorizeIcons": false,
-                    "hideMode": "hidden",
-                    "id": "ActiveWindow",
-                    "maxWidth": 145,
-                    "scrollingMode": "hover",
-                    "showIcon": true,
-                    "showText": true,
-                    "textColor": "none",
-                    "useFixedWidth": false
-                },
-                {
                     "compactMode": true,
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
@@ -195,7 +184,7 @@
                 },
                 {
                     "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
+                    "displayMode": "graphic",
                     "hideIfIdle": false,
                     "hideIfNotDetected": true,
                     "id": "Battery",
@@ -229,35 +218,6 @@
                     "icon": "noctalia",
                     "id": "ControlCenter",
                     "useDistroLogo": false
-                },
-                {
-                    "defaultSettings": {
-                        "assetsDir": "",
-                        "autoApplyOnStartup": true,
-                        "defaultAudioReactiveEffects": true,
-                        "defaultClamp": "clamp",
-                        "defaultDisableMouse": false,
-                        "defaultDisableParallax": false,
-                        "defaultFps": 30,
-                        "defaultFullscreenPauseOnlyActive": false,
-                        "defaultMuted": true,
-                        "defaultNoAutomute": false,
-                        "defaultNoFullscreenPause": false,
-                        "defaultScaling": "fill",
-                        "defaultVolume": 100,
-                        "enableExtraPropertiesEditor": true,
-                        "iconColor": "none",
-                        "lastKnownGoodScreens": {
-                        },
-                        "panelLastSelectedPath": "",
-                        "runtimeRecoveryPending": false,
-                        "screens": {
-                        },
-                        "wallpaperProperties": {
-                        },
-                        "wallpapersFolder": "~/.local/share/Steam/steamapps/workshop/content/431960"
-                    },
-                    "id": "plugin:linux-wallpaperengine-controller"
                 }
             ]
         }
@@ -286,15 +246,15 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": false,
+        "darkMode": true,
         "generationMethod": "tonal-spot",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
         "predefinedScheme": "Nord",
-        "schedulingMode": "off",
+        "schedulingMode": "location",
         "syncGsettings": true,
-        "useWallpaperColors": true
+        "useWallpaperColors": false
     },
     "controlCenter": {
         "cards": [
@@ -472,7 +432,7 @@
         "enabled": true,
         "performanceModeDisabled": "",
         "performanceModeEnabled": "",
-        "screenLock": "",
+        "screenLock": "~/.config/noctalia/scripts/screen-lock.sh",
         "screenUnlock": "",
         "session": "",
         "startup": "",
@@ -480,7 +440,7 @@
     },
     "idle": {
         "customCommands": "[]",
-        "enabled": false,
+        "enabled": true,
         "fadeDuration": 5,
         "lockCommand": "",
         "lockTimeout": 660,
@@ -490,7 +450,7 @@
         "screenOffCommand": "",
         "screenOffTimeout": 600,
         "suspendCommand": "",
-        "suspendTimeout": 1800
+        "suspendTimeout": 180
     },
     "location": {
         "analogClockInCalendar": false,
@@ -704,7 +664,7 @@
             },
             {
                 "enabled": true,
-                "id": "qt"
+                "id": "alacritty"
             }
         ],
         "enableUserTheming": false
@@ -721,7 +681,7 @@
         "settingsPanelMode": "centered",
         "settingsPanelSideBarCardStyle": false,
         "tooltipsEnabled": true,
-        "translucentWidgets": false
+        "translucentWidgets": true
     },
     "wallpaper": {
         "automationEnabled": false,
@@ -729,6 +689,48 @@
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
+            {
+                "appearance": "light",
+                "colorScheme": "Nord",
+                "darkMode": false,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#5e81ac",
+                    "#64adc2",
+                    "#6fa9a8",
+                    "#bf616a"
+                ],
+                "path": "/home/stefano/Dotfiles/backgrounds/gigapixel-violet_evergarden_pic_nord.png",
+                "useWallpaperColors": false
+            },
+            {
+                "appearance": "light",
+                "colorScheme": "Nord",
+                "darkMode": false,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#355ca8",
+                    "#575e71",
+                    "#725573",
+                    "#ba1a1a"
+                ],
+                "path": "/home/stefano/Dotfiles/backgrounds/gigapixel-violet_evergarden_pic_nord_2.png",
+                "useWallpaperColors": true
+            },
+            {
+                "appearance": "light",
+                "colorScheme": "Nord",
+                "darkMode": false,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#8fbcbb",
+                    "#88c0d0",
+                    "#5e81ac",
+                    "#bf616a"
+                ],
+                "path": "/home/stefano/Dotfiles/backgrounds/gigapixel-violet_evergarden_pic_nord_1.png",
+                "useWallpaperColors": false
+            }
         ],
         "fillColor": "#000000",
         "fillMode": "crop",
@@ -764,7 +766,7 @@
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
         "wallhavenPurity": "100",
-        "wallhavenQuery": "",
+        "wallhavenQuery": "ghibli",
         "wallhavenRatios": "",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",

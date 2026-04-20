@@ -1,1 +1,5 @@
+<<<<<<< Updated upstream
 [{"in_progress":false,"done":false,"id":"1776343454_2144","notes":"","category":"","text":"Sincronizza con blackpearl","depth":0,"created_at":1776343454},{"in_progress":false,"done":false,"id":"1776343532_7879","due_at":1776376799,"created_at":1776343532,"category":"","text":"Prendi spunto da LazyVim così capiamo se trovo qualcosa di nuovo","depth":0,"notes":""}]
+=======
+[{"in_progress":false,"category":"","depth":0,"text":"Sincronizza con blackpearl","notes":"","done":false,"created_at":1776343454,"id":"1776343454_2144"},{"in_progress":false,"category":"","depth":0,"text":"Prendi spunto da LazyVim così capiamo se trovo qualcosa di nuovo","notes":"","done":false,"id":"1776343532_7879","created_at":1776343532,"due_at":1776376799}]
+>>>>>>> Stashed changes

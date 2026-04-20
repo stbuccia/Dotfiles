@@ -208,6 +208,7 @@ return {
         "mgierada/lazydocker.nvim",
         lazy = true,
         dependencies = { "akinsho/toggleterm.nvim" },
+        cmd = { "Lazydocker" },
         keys = {
             { "<leader>ld", "<cmd>Lazydocker<cr>", desc = "LazyDocker" },
         },

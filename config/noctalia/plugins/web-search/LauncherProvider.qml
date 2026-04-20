@@ -39,24 +39,29 @@ Item {
     function isUrl(text) {
         if (!text || text.includes(" ")) return false;
 
-        if (/^https?:\/\//i.test(text)) return true;
+        const protocolPattern = /^[a-z0-9]+:\/\/\S+/i;
+        if (protocolPattern.test(text)) return true;
 
-        const localhostPattern = /^localhost(:[0-9]+)?(\/\S*)?$/i;
+        const localhostPattern = /^localhost(\/\S*)?$/i;
         const ipPattern = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(:[0-9]+)?(\/\S*)?$/;
-        const domainPattern = /^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z]{2,})+(:[0-9]+)?(\/\S*)?$/;
+        const domainPattern = /^([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,}(:[0-9]+)?(\/\S*)?$/i;
+        const hostPortPattern = /^[a-zA-Z0-9-]+:[0-9]+(\/\S*)?$/i;
 
-        return localhostPattern.test(text) || ipPattern.test(text) || domainPattern.test(text);
+        return localhostPattern.test(text) || ipPattern.test(text) || domainPattern.test(text) || hostPortPattern.test(text);
     }
 
     function normalizeUrl(text) {
         text = text.trim();
         if (!text) return "";
-        if (/^[a-z0-9]+:\/\//i.test(text)) return text;
 
-        const isLocal = /^localhost(:[0-9]+)?(\/\S*)?$/i.test(text) || 
-                        /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(:[0-9]+)?(\/\S*)?$/.test(text);
+        const protocolPattern = /^[a-z0-9]+:\/\/\S+/i;
+        if (protocolPattern.test(text)) return text;
+
+        const localhostPattern = /^localhost(\/\S*)?$/i;
+        const ipPattern = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(:[0-9]+)?(\/\S*)?$/;
+        const hostPortPattern = /^[a-zA-Z0-9-]+:[0-9]+(\/\S*)?$/i;
         
-        if (isLocal) {
+        if (localhostPattern.test(text) || ipPattern.test(text) || hostPortPattern.test(text)) {
             return "http://" + text;
         }
 

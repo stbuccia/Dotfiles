@@ -73,6 +73,12 @@ You can configure the plugin directly via Noctalia's Plugin Settings:
 
 ## Changelog
 
+### 1.1.1
+- Fix protocols other than http/https not recognized as URL
+- Support for middle domain with only one character (e.g., www.a.com)
+- Support for hostname without dot with port (e.g., hostname:8080)
+    - If you want to enter hostname without port and dot, you have to type the protocol manually
+
 ### 1.1.0
 - Added Direct URL Opening. Automatically detects URLs, IP addresses, and localhost and opens them directly in the browser
 - Added configurable toggle for the Direct URL feature
